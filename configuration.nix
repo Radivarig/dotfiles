@@ -73,6 +73,8 @@
   # sound.enable = true;
   # hardware.pulseaudio.enable = true;
 
+  services.nixosManual.showManual = true;
+
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
   # services.xserver.layout = "us";
@@ -86,10 +88,11 @@
   # services.xserver.desktopManager.plasma5.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.guest = {
-  #   isNormalUser = true;
-  #   uid = 1000;
-  # };
+  users.users.radivarig = {
+    isNormalUser = true; # set some defaults
+    extraGroups = [ "wheel" ];
+    uid = 1000;
+  };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
