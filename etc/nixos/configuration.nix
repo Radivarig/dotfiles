@@ -77,7 +77,7 @@
   services.nixosManual.showManual = true;
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
+  services.xserver.enable = true;
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
 
@@ -100,6 +100,10 @@
       userName = "Radivarig";
       userEmail = "reslav.hollos@gmail.com";
     };
+
+    xsession.enable = true;
+    xsession.windowManager.i3.enable = true;
+
   };
 
   # This value determines the NixOS release with which your system is to be
