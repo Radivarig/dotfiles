@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     ];
 
   # Use the GRUB 2 boot loader.
@@ -92,6 +93,13 @@
     isNormalUser = true; # set some defaults
     extraGroups = [ "wheel" ];
     uid = 1000;
+  };
+  home-manager.users.radivarig = {
+    programs.git = {
+      enable = true;
+      userName = "Radivarig";
+      userEmail = "reslav.hollos@gmail.com";
+    };
   };
 
   # This value determines the NixOS release with which your system is to be
