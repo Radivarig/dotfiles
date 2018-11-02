@@ -110,6 +110,8 @@
       userEmail = "reslav.hollos@gmail.com";
     };
 
+    programs.chromium.enable = true;
+
     xsession.enable = true;
     xsession.windowManager.i3.enable = true;
 
