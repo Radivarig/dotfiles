@@ -72,8 +72,8 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   services.nixosManual.showManual = true;
 
@@ -84,7 +84,7 @@
 
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
-
+  
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
