@@ -102,6 +102,7 @@
     isNormalUser = true; # set some defaults
     extraGroups = [ "wheel" ];
     uid = 1000;
+    shell = pkgs.zsh;
   };
   home-manager.users.radivarig = {
     programs.git = {
@@ -110,7 +111,20 @@
       userEmail = "reslav.hollos@gmail.com";
     };
 
+    programs.zsh = {
+      enable = true;
+      oh-my-zsh = {
+        enable = true;
+        theme = "af-magic";
+      };
+    };
+
     programs.chromium.enable = true;
+
+    xresources.properties = {
+      "xterm*background" = "black";
+      "xterm*foreground" = "lightgray";
+    };
 
     xsession.enable = true;
     xsession.windowManager.i3 = {
