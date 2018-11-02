@@ -84,7 +84,15 @@
 
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
-  
+  services.xserver.synaptics = {
+    enable = true;
+    twoFingerScroll = true;
+    tapButtons = false;
+    additionalOptions = ''
+      Option "TapButton3" "2"
+    '';
+  };
+
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
