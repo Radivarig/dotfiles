@@ -104,6 +104,7 @@
     uid = 1000;
     shell = pkgs.zsh;
   };
+
   home-manager.users.radivarig = {
     programs.git = {
       enable = true;
@@ -111,7 +112,14 @@
       userEmail = "reslav.hollos@gmail.com";
     };
 
+    home.sessionVariables = {
+      EDITOR = "emacs --no-window-system";
+    };
+
     programs.zsh = {
+      shellAliases = {
+        edit = "$EDITOR";
+      };
       enable = true;
       oh-my-zsh = {
         enable = true;
@@ -130,6 +138,7 @@
       "xterm*foreground" = "lightgray";
       "xterm*metaSendsEscape" = "true";
       "xterm*selectToClipboard" = "true";
+      "xterm*cursorBlink" = "1";
     };
 
     xsession.enable = true;
