@@ -129,6 +129,7 @@
       "xterm*background" = "black";
       "xterm*foreground" = "lightgray";
       "xterm*metaSendsEscape" = "true";
+      "xterm*selectToClipboard" = "true";
     };
 
     xsession.enable = true;
