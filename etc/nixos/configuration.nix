@@ -112,6 +112,10 @@
       userEmail = "reslav.hollos@gmail.com";
     };
 
+    home.packages = [
+      pkgs.trash-cli
+    ];
+
     home.sessionVariables = {
       EDITOR = "emacs --no-window-system";
     };
@@ -119,6 +123,13 @@
     programs.zsh = {
       shellAliases = {
         edit = "$EDITOR";
+        mkdir = "mkdir -pv"; # create parent
+        del = "trash-put";
+
+        # add prompt
+        mv = "mv -i";
+        cp = "cp -i";
+        rm = "rm -i";
       };
       enable = true;
       oh-my-zsh = {
