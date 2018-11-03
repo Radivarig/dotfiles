@@ -119,11 +119,16 @@
       };
     };
 
+    programs.emacs = {
+      enable = true;
+    };
+
     programs.chromium.enable = true;
 
     xresources.properties = {
       "xterm*background" = "black";
       "xterm*foreground" = "lightgray";
+      "xterm*metaSendsEscape" = "true";
     };
 
     xsession.enable = true;
