@@ -119,11 +119,12 @@ services.xserver.xkbOptions = "ctrl:nocaps";
       source-code-pro
     ];
 
-    home.sessionVariables = {
-      EDITOR = "emacs --no-window-system";
-    };
-
     programs.zsh = {
+      initExtra = ''
+        # use array since no word split in zsh
+        export EDITOR=(emacs -nw)
+      '';
+
       shellAliases = {
         edit = "$EDITOR";
         mkdir = "mkdir -pv"; # create parent
