@@ -93,6 +93,8 @@
     '';
   };
 
+services.xserver.xkbOptions = "ctrl:nocaps";
+
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
@@ -112,8 +114,9 @@
       userEmail = "reslav.hollos@gmail.com";
     };
 
-    home.packages = [
-      pkgs.trash-cli
+    home.packages = with pkgs; [
+      trash-cli
+      source-code-pro
     ];
 
     home.sessionVariables = {
