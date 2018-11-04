@@ -154,6 +154,7 @@ services.xserver.xkbOptions = "ctrl:nocaps";
       "xterm*metaSendsEscape" = "true";
       "xterm*selectToClipboard" = "true";
       "xterm*cursorBlink" = "1";
+      "xterm*titeInhibit" = "true";
     };
 
     xsession.enable = true;
