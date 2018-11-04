@@ -129,6 +129,9 @@
       initExtra = ''
         # use array since no word split in zsh
         export EDITOR=(emacs -nw)
+
+        # make cd clear and ls
+        cd() { builtin cd "$@" && clear && ls --group-directories-first ; }
       '';
 
       shellAliases = {
