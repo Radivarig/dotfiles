@@ -11,6 +11,11 @@
       "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     ];
 
+  nixpkgs.config = {
+    allowUnfree = true;
+    # more stuff
+  };
+
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
@@ -93,7 +98,7 @@
     '';
   };
 
-services.xserver.xkbOptions = "ctrl:nocaps";
+  services.xserver.xkbOptions = "ctrl:nocaps";
 
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
@@ -117,6 +122,7 @@ services.xserver.xkbOptions = "ctrl:nocaps";
     home.packages = with pkgs; [
       trash-cli
       source-code-pro
+      vscode
     ];
 
     programs.zsh = {
