@@ -194,7 +194,7 @@
         "${mod}+e" = "layout toggle split";
 
         "${mod}+Shift+space" = "floating toggle";
-        "${mod}+tab" = "focus mode_toggle";
+        "${mod}+Tab" = "focus mode_toggle";
         "${mod}+minus" = "sticky toggle";
 
         "${mod}+a" = "focus parent";
