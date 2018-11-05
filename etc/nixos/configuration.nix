@@ -48,8 +48,7 @@
   #   defaultLocale = "en_US.UTF-8";
   # };
 
-  # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Europe/Zagreb";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
