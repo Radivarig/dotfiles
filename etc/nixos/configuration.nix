@@ -111,6 +111,8 @@
 
     programs.zsh = {
       initExtra = ''
+        setopt menu_complete # zsh complete on first tab
+
         # does not work from sessionCommands
         ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
 
