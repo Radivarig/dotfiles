@@ -24,6 +24,8 @@
     }
   ];
 
+  virtualisation.docker.enable = true;
+
   # networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
 
@@ -72,7 +74,7 @@
 
   users.users.radivarig = {
     isNormalUser = true; # set some defaults
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "docker" ];
     uid = 1000;
     shell = pkgs.zsh;
   };
