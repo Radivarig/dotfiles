@@ -64,7 +64,6 @@
   };
 
   services.xserver.displayManager.sessionCommands = ''
-    ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
     ${pkgs.xlibs.xset}/bin/xset r rate 200 60  # keyboard repeat rate
 
     while true; do ${pkgs.feh}/bin/feh -z --bg-fill ~/Downloads/Wallpapers;
@@ -109,6 +108,9 @@
 
     programs.zsh = {
       initExtra = ''
+        # does not work from sessionCommands
+        ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
+
         # use array since no word split in zsh
         export EDITOR=(emacs -nw)
 
