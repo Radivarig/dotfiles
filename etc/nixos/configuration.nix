@@ -94,6 +94,7 @@
       xorg.xev
       xorg.xmodmap
       feh
+      nodejs-10_x
     ];
 
     # bind Alt_R + hjkl to arrows
