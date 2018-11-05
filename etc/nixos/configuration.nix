@@ -112,7 +112,8 @@
         ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
 
         # use array since no word split in zsh
-        export EDITOR=(emacs -nw)
+        export EDITOR=(emacs -nw -q)
+        export GIT_EDITOR=$=EDITOR
 
         # make cd clear and ls
         cd() { builtin cd "$@" && clear && ls --group-directories-first ; }
