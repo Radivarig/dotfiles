@@ -164,6 +164,7 @@
         "${mod}+Shift+q" = "kill";
         "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run -i";
 
+        # move focus/move hjkl
         "${mod}+${left}"  = "focus left";
         "${mod}+${down}"  = "focus down";
         "${mod}+${up}"    = "focus up";
@@ -173,6 +174,17 @@
         "${mod}+Shift+${down}"  = "move down";
         "${mod}+Shift+${up}"    = "move up";
         "${mod}+Shift+${right}" = "move right";
+
+        # # move focus/move arrows
+        "${mod}+Left"  = "focus left";
+        "${mod}+Down"  = "focus down";
+        "${mod}+Up"    = "focus up";
+        "${mod}+Right" = "focus right";
+
+        "${mod}+Shift+Left"  = "move left";
+        "${mod}+Shift+Down"  = "move down";
+        "${mod}+Shift+Up"    = "move up";
+        "${mod}+Shift+Right" = "move right";
 
         "${mod}+v" = "split toggle";
         "${mod}+f" = "fullscreen toggle";
