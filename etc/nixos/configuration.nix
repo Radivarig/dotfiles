@@ -65,6 +65,10 @@
 
   services.xserver.displayManager.sessionCommands = ''
     ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
+    ${pkgs.xlibs.xset}/bin/xset r rate 200 60  # keyboard repeat rate
+
+    while true; do ${pkgs.feh}/bin/feh -z --bg-fill ~/Downloads/Wallpapers;
+      sleep $((5*60)); done &
   '';
 
   users.users.radivarig = {
@@ -88,6 +92,7 @@
 
       xorg.xev
       xorg.xmodmap
+      feh
     ];
 
     # bind Alt_R + hjkl to arrows
