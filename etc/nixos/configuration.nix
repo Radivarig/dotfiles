@@ -104,6 +104,10 @@
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
 
+  services.xserver.displayManager.sessionCommands = ''
+    ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
+  '';
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.radivarig = {
     isNormalUser = true; # set some defaults
@@ -123,7 +127,22 @@
       trash-cli
       source-code-pro
       vscode
+
+      xorg.xev
+      xorg.xmodmap
     ];
+
+    # bind Alt_R + hjkl to arrows
+    home.file.".Xmodmap".text = ''
+      ! unbind Alt_R
+      keycode 108 = NoSymbol NoSymbol
+      keycode 108 = Mode_switch
+
+      keysym h = h H Left NoSymbol NoSymbol NoSymbol
+      keysym j = j J Down NoSymbol NoSymbol NoSymbol
+      keysym k = k K Up NoSymbol NoSymbol NoSymbol
+      keysym l = l L Right NoSymbol lstroke Lstroke
+    '';
 
     programs.zsh = {
       initExtra = ''
