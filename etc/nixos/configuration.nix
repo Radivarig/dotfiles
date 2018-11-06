@@ -93,6 +93,8 @@
 
       xorg.xev
       xorg.xmodmap
+      xorg.xbacklight
+
       feh
       nodejs-10_x
     ];
@@ -149,7 +151,7 @@
 
     xresources.properties = {
       "xterm*background" = "black";
-      "xterm*foreground" = "lightgray";
+      "xterm*foreground" = "white";
       "xterm*metaSendsEscape" = "true";
       "xterm*selectToClipboard" = "true";
       "xterm*cursorBlink" = "1";
