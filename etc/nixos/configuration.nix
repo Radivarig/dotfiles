@@ -91,6 +91,8 @@
       source-code-pro
       vscode
 
+      pavucontrol
+
       xorg.xev
       xorg.xmodmap
       xorg.xbacklight
