@@ -94,6 +94,7 @@
       xorg.xev
       xorg.xmodmap
       xorg.xbacklight
+      compton
 
       feh
       nodejs-10_x
@@ -101,14 +102,24 @@
 
     # bind Alt_R + hjkl to arrows
     home.file.".Xmodmap".text = ''
-      ! unbind Alt_R
+      ! unbind ralt
       keycode 108 = NoSymbol NoSymbol
       keycode 108 = Mode_switch
-
+      ! ralt + hjkl to arrows
       keysym h = h H Left NoSymbol NoSymbol NoSymbol
       keysym j = j J Down NoSymbol NoSymbol NoSymbol
       keysym k = k K Up NoSymbol NoSymbol NoSymbol
       keysym l = l L Right NoSymbol lstroke Lstroke
+
+      ! rshift to enter
+      keycode 62 = Return
+    '';
+
+    home.file.".config/compton.conf".text = ''
+      opacity-rule = [
+        "85:class_g *= 'XTerm'",
+        "93:class_g *= 'Code'"
+      ];
     '';
 
     programs.zsh = {
@@ -156,11 +167,18 @@
       "xterm*selectToClipboard" = "true";
       "xterm*cursorBlink" = "1";
       "xterm*titeInhibit" = "true";
+      "xterm*translations" = '' #override \n\
+        Ctrl <Key> minus: smaller-vt-font() \n\
+        Ctrl <Key> plus: larger-vt-font()
+      '';
     };
 
     xsession.enable = true;
     xsession.windowManager.i3 = rec {
       enable = true;
+      extraConfig = ''
+        exec --no-startup-id compton -b
+      '';
       config.modifier = "Mod4";
       config.keybindings = let
         mod = config.modifier;
@@ -193,7 +211,8 @@
         "${mod}+Shift+Up"    = "move up";
         "${mod}+Shift+Right" = "move right";
 
-        "${mod}+v" = "split toggle";
+        "${mod}+v" = "split v";
+        "${mod}+b" = "split h";
         "${mod}+f" = "fullscreen toggle";
 
         "${mod}+s" = "layout stacking";
