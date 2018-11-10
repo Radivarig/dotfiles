@@ -128,7 +128,6 @@
 
       xorg.xev
       xorg.xmodmap
-      xorg.xbacklight
       compton
 
       feh
@@ -236,7 +235,15 @@
         mod = config.modifier;
         left = "h"; down = "j"; up = "k"; right = "l";
         resizeSmall = "1"; resizeBig = "5";
+        # todo: use full paths from ${pkgs.package}/bin/package
       in {
+        "XF86AudioMute"        = "exec amixer sset 'Master' toggle";
+        "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+
+        "XF86MonBrightnessUp"   = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -inc 10";
+        "XF86MonBrightnessDown" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -dec 10";
+
         "${mod}+Return" = "exec i3-sensible-terminal";
         "${mod}+Shift+q" = "kill";
         "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run -i";
