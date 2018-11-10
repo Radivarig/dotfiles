@@ -152,6 +152,18 @@
         mv = "mv -i";
         cp = "cp -i";
         rm = "rm -i";
+
+        gl = "git log --all --decorate --oneline --graph";
+        gd = "git diff";
+        gds = "git diff --staged";
+        gs = "git status";
+        ga = "git add";
+        gc = "git commit --message";
+        gca = "git commit --amend";
+        gb = "git branch --all";
+        gcp = "git cherry-pick";
+        gp = "git pull";
+        gm = "git merge";
       };
 
       enable = true;
