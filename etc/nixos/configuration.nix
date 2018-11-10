@@ -76,6 +76,22 @@
     '';
   };
 
+  services.xserver.displayManager = {
+    slim = {
+      enable = true;
+      defaultUser = "radivarig";
+    };
+  };
+
+  systemd.services.lockOnClose = {
+    description = "Lock X session using slimlock";
+    wantedBy = [ "sleep.target" ];
+    serviceConfig = {
+      User = "radivarig";
+      ExecStart = "${pkgs.slim}/bin/slimlock";
+    };
+  };
+
   services.xserver.displayManager.sessionCommands = ''
     ${pkgs.xlibs.xset}/bin/xset r rate 200 60  # keyboard repeat rate
 
