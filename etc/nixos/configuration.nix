@@ -103,6 +103,7 @@
       vscode
 
       pavucontrol
+      tldr
 
       ghc
       cabal-install
