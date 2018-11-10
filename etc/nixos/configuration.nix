@@ -24,6 +24,17 @@
     }
   ];
 
+  nix = {
+    binaryCaches = [
+      "https://cache.nixos.org/"
+      "https://hie-nix.cachix.org"
+    ];
+    binaryCachePublicKeys = [
+      "hie-nix.cachix.org-1:EjBSHzF6VmDnzqlldGXbi0RM3HdjfTU3yDRi9Pd0jTY="
+    ];
+    trustedUsers = [ "root" "radivarig" ];
+  };
+
   virtualisation.docker.enable = true;
 
   # networking.hostName = "nixos"; # Define your hostname.
@@ -92,6 +103,11 @@
       vscode
 
       pavucontrol
+
+      ghc
+      cabal-install
+      cachix
+      haskellPackages.hoogle
 
       xorg.xev
       xorg.xmodmap
