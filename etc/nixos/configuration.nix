@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 
+# todo: separate to files
+# todo: use full paths from ${pkgs.package}/bin/package
 {
   imports =
     [
@@ -134,6 +136,7 @@
       nodejs-10_x
     ];
 
+    # todo: extend xkb layout
     # bind Alt_R + hjkl to arrows
     home.file.".Xmodmap".text = ''
       ! unbind ralt
@@ -235,7 +238,7 @@
         mod = config.modifier;
         left = "h"; down = "j"; up = "k"; right = "l";
         resizeSmall = "1"; resizeBig = "5";
-        # todo: use full paths from ${pkgs.package}/bin/package
+      # todo: generate arrows/hjkl bindings over functions
       in {
         "XF86AudioMute"        = "exec amixer sset 'Master' toggle";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
@@ -318,6 +321,17 @@
         "${mod}+Ctrl+Shift+${down}"  = "resize shrink height ${resizeBig} px or ${resizeBig} ppt";
         "${mod}+Ctrl+Shift+${up}"    = "resize grow   height ${resizeBig} px or ${resizeBig} ppt";
         "${mod}+Ctrl+Shift+${right}" = "resize grow   width  ${resizeBig} px or ${resizeBig} ppt";
+
+        # resize for arrows
+        "${mod}+Ctrl+Left"  = "resize shrink width  ${resizeSmall} px or ${resizeSmall} ppt";
+        "${mod}+Ctrl+Down"  = "resize shrink height ${resizeSmall} px or ${resizeSmall} ppt";
+        "${mod}+Ctrl+Up"    = "resize grow   height ${resizeSmall} px or ${resizeSmall} ppt";
+        "${mod}+Ctrl+Right" = "resize grow   width  ${resizeSmall} px or ${resizeSmall} ppt";
+
+        "${mod}+Ctrl+Shift+Left"  = "resize shrink width  ${resizeBig} px or ${resizeBig} ppt";
+        "${mod}+Ctrl+Shift+Down"  = "resize shrink height ${resizeBig} px or ${resizeBig} ppt";
+        "${mod}+Ctrl+Shift+Up"    = "resize grow   height ${resizeBig} px or ${resizeBig} ppt";
+        "${mod}+Ctrl+Shift+Right" = "resize grow   width  ${resizeBig} px or ${resizeBig} ppt";
       };
     };
   };
