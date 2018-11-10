@@ -107,6 +107,10 @@
       ! unbind ralt
       keycode 108 = NoSymbol NoSymbol
       keycode 108 = Mode_switch
+
+      ! rctrl to backspace
+      keycode 105 = BackSpace
+
       ! ralt + hjkl to arrows
       keysym h = h H Left NoSymbol NoSymbol NoSymbol
       keysym j = j J Down NoSymbol NoSymbol NoSymbol
@@ -149,6 +153,7 @@
         cp = "cp -i";
         rm = "rm -i";
       };
+
       enable = true;
       oh-my-zsh = {
         enable = true;
@@ -263,10 +268,8 @@
         "${mod}+Ctrl+Shift+${right}" = "resize grow   width  ${resizeBig} px or ${resizeBig} ppt";
       };
     };
-
   };
 
   # change ONLY after NixOS release notes say so (db servers can break)
   system.stateVersion = "18.09"; # Did you read the comment?
-
 }
