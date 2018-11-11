@@ -156,6 +156,22 @@
       keycode 62 = Return
     '';
 
+    home.file.".terminalAtFocusedTitlePath.sh" = {
+      executable = true;
+      text = ''
+        # opens a new terminal at path contained in the focused window title
+        title="$(${pkgs.xdotool}/bin/xdotool getactivewindow getwindowname)"
+        # get everything from first to last slash
+        CURRENT_PATH=$(echo ''${title} | ${pkgs.perl}/bin/perl -nE '$_ =~ m| ( ~?/[^\s]* ) |x; say "$1"')
+        # emulate tilda expansion since path is used in a string
+        CURRENT_PATH="''${CURRENT_PATH/\~/$HOME}"
+        # if it is a file use parent dir
+        [ -f "$CURRENT_PATH" ] && CURRENT_PATH="$(dirname $CURRENT_PATH)"
+        cd "$CURRENT_PATH"
+        i3-sensible-terminal
+      '';
+    };
+
     home.file.".config/compton.conf".text = ''
       opacity-rule = [
         "85:class_g *= 'XTerm'",
@@ -247,7 +263,7 @@
         "XF86MonBrightnessUp"   = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -inc 10";
         "XF86MonBrightnessDown" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -dec 10";
 
-        "${mod}+Return" = "exec i3-sensible-terminal";
+        "${mod}+Return" = "exec ~/.terminalAtFocusedTitlePath.sh";
         "${mod}+Shift+q" = "kill";
         "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run -i";
 
