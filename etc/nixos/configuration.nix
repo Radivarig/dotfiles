@@ -120,6 +120,7 @@
       source-code-pro
       vscode
 
+      vlc
       pavucontrol
       tldr
 
@@ -128,6 +129,7 @@
       cachix
       haskellPackages.hoogle
 
+      xorg.xkill
       xorg.xev
       xorg.xmodmap
       compton
@@ -182,6 +184,7 @@
     programs.zsh = {
       initExtra = ''
         setopt menu_complete # zsh complete on first tab
+        function omz_termsupport_preexec { }
 
         # does not work from sessionCommands
         ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
