@@ -122,6 +122,7 @@
 
       vlc
       pavucontrol
+
       tldr
 
       ghc
@@ -149,9 +150,9 @@
       keycode 105 = BackSpace
 
       ! ralt + hjkl to arrows
-      keysym h = h H Left NoSymbol NoSymbol NoSymbol
-      keysym j = j J Down NoSymbol NoSymbol NoSymbol
-      keysym k = k K Up NoSymbol NoSymbol NoSymbol
+      keysym j = j J Left NoSymbol NoSymbol NoSymbol
+      keysym k = k K Down NoSymbol NoSymbol NoSymbol
+      keysym i = i I Up NoSymbol NoSymbol NoSymbol
       keysym l = l L Right NoSymbol lstroke Lstroke
 
       ! rshift to enter
@@ -252,10 +253,10 @@
       extraConfig = ''
         exec --no-startup-id compton -b
       '';
+      # config.statusCommand = "${pkgs.i3blocks}";
       config.modifier = "Mod4";
       config.keybindings = let
         mod = config.modifier;
-        left = "h"; down = "j"; up = "k"; right = "l";
         resizeSmall = "1"; resizeBig = "5";
       # todo: generate arrows/hjkl bindings over functions
       in {
@@ -270,16 +271,16 @@
         "${mod}+Shift+q" = "kill";
         "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run -i";
 
-        # move focus/move hjkl
-        "${mod}+${left}"  = "focus left";
-        "${mod}+${down}"  = "focus down";
-        "${mod}+${up}"    = "focus up";
-        "${mod}+${right}" = "focus right";
+        # move focus/move jkil
+        "${mod}+j"  = "focus left";
+        "${mod}+k"  = "focus down";
+        "${mod}+i"    = "focus up";
+        "${mod}+l" = "focus right";
 
-        "${mod}+Shift+${left}"  = "move left";
-        "${mod}+Shift+${down}"  = "move down";
-        "${mod}+Shift+${up}"    = "move up";
-        "${mod}+Shift+${right}" = "move right";
+        "${mod}+Shift+j"  = "move left";
+        "${mod}+Shift+k"  = "move down";
+        "${mod}+Shift+i"    = "move up";
+        "${mod}+Shift+l" = "move right";
 
         # # move focus/move arrows
         "${mod}+Left"  = "focus left";
@@ -331,17 +332,6 @@
         "${mod}+Shift+r" = "restart";
 
         # resize (also mod + rmb)
-        "${mod}+Ctrl+${left}"  = "resize shrink width  ${resizeSmall} px or ${resizeSmall} ppt";
-        "${mod}+Ctrl+${down}"  = "resize shrink height ${resizeSmall} px or ${resizeSmall} ppt";
-        "${mod}+Ctrl+${up}"    = "resize grow   height ${resizeSmall} px or ${resizeSmall} ppt";
-        "${mod}+Ctrl+${right}" = "resize grow   width  ${resizeSmall} px or ${resizeSmall} ppt";
-
-        "${mod}+Ctrl+Shift+${left}"  = "resize shrink width  ${resizeBig} px or ${resizeBig} ppt";
-        "${mod}+Ctrl+Shift+${down}"  = "resize shrink height ${resizeBig} px or ${resizeBig} ppt";
-        "${mod}+Ctrl+Shift+${up}"    = "resize grow   height ${resizeBig} px or ${resizeBig} ppt";
-        "${mod}+Ctrl+Shift+${right}" = "resize grow   width  ${resizeBig} px or ${resizeBig} ppt";
-
-        # resize for arrows
         "${mod}+Ctrl+Left"  = "resize shrink width  ${resizeSmall} px or ${resizeSmall} ppt";
         "${mod}+Ctrl+Down"  = "resize shrink height ${resizeSmall} px or ${resizeSmall} ppt";
         "${mod}+Ctrl+Up"    = "resize grow   height ${resizeSmall} px or ${resizeSmall} ppt";
@@ -351,6 +341,18 @@
         "${mod}+Ctrl+Shift+Down"  = "resize shrink height ${resizeBig} px or ${resizeBig} ppt";
         "${mod}+Ctrl+Shift+Up"    = "resize grow   height ${resizeBig} px or ${resizeBig} ppt";
         "${mod}+Ctrl+Shift+Right" = "resize grow   width  ${resizeBig} px or ${resizeBig} ppt";
+
+        # resize for jkil
+        "${mod}+Ctrl+j"  = "resize shrink width  ${resizeSmall} px or ${resizeSmall} ppt";
+        "${mod}+Ctrl+k"  = "resize shrink height ${resizeSmall} px or ${resizeSmall} ppt";
+        "${mod}+Ctrl+i"  = "resize grow   height ${resizeSmall} px or ${resizeSmall} ppt";
+        "${mod}+Ctrl+l"  = "resize grow   width  ${resizeSmall} px or ${resizeSmall} ppt";
+
+        "${mod}+Ctrl+Shift+j"  = "resize shrink width  ${resizeBig} px or ${resizeBig} ppt";
+        "${mod}+Ctrl+Shift+k"  = "resize shrink height ${resizeBig} px or ${resizeBig} ppt";
+        "${mod}+Ctrl+Shift+i"  = "resize grow   height ${resizeBig} px or ${resizeBig} ppt";
+        "${mod}+Ctrl+Shift+l"  = "resize grow   width  ${resizeBig} px or ${resizeBig} ppt";
+
       };
     };
   };
