@@ -115,7 +115,12 @@
       userEmail = "reslav.hollos@gmail.com";
     };
 
-    home.packages = with pkgs; [
+    home.packages = let
+      my-python-packages = python-packages: with python-packages; [
+        pylint
+      ];
+      python-with-my-packages = pkgs.python3.withPackages my-python-packages;
+    in with pkgs; [
       trash-cli
       source-code-pro
       vscode
@@ -124,12 +129,17 @@
       pavucontrol
 
       tldr
+      wget
+      zip
+
+      python-with-my-packages
 
       ghc
       cabal-install
       cachix
       haskellPackages.hoogle
 
+      xorg.xhost
       xorg.xkill
       xorg.xev
       xorg.xmodmap
@@ -253,6 +263,7 @@
       extraConfig = ''
         exec --no-startup-id compton -b
       '';
+
       # config.statusCommand = "${pkgs.i3blocks}";
       config.modifier = "Mod4";
       config.keybindings = let
