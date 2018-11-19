@@ -209,9 +209,14 @@
       '';
 
       shellAliases = {
+        ".." = "cd ..";
+        "..." = "cd ../..";
+        "cd.." = "cd ..";
+
         edit = "$EDITOR";
         mkdir = "mkdir -pv"; # create parent
         del = "trash-put";
+        nr = ''nix repl "<nixpkgs>" "<nixpkgs/nixos>"'';
 
         # add prompt
         mv = "mv -i";
