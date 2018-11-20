@@ -8,6 +8,7 @@
       ./hardware-configuration.nix # hardware scan results
       ./boot.nix
       ./cachix.nix
+      ./display-manager.nix
       "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     ];
 
@@ -54,22 +55,6 @@
     additionalOptions = ''
       Option "TapButton3" "2"
     '';
-  };
-
-  services.xserver.displayManager = {
-    slim = {
-      enable = true;
-      defaultUser = "radivarig";
-    };
-  };
-
-  systemd.services.lockOnClose = {
-    description = "Lock X session using slimlock";
-    wantedBy = [ "sleep.target" ];
-    serviceConfig = {
-      User = "radivarig";
-      ExecStart = "${pkgs.slim}/bin/slimlock";
-    };
   };
 
   services.xserver.displayManager.sessionCommands = ''
