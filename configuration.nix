@@ -7,22 +7,12 @@
     [
       ./hardware-configuration.nix # hardware scan results
       ./boot.nix
+      ./cachix.nix
       "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     ];
 
   nixpkgs.config = {
     allowUnfree = true;
-  };
-
-  nix = {
-    binaryCaches = [
-      "https://cache.nixos.org/"
-      "https://hie-nix.cachix.org"
-    ];
-    binaryCachePublicKeys = [
-      "hie-nix.cachix.org-1:EjBSHzF6VmDnzqlldGXbi0RM3HdjfTU3yDRi9Pd0jTY="
-    ];
-    trustedUsers = [ "root" "radivarig" ];
   };
 
   virtualisation.docker.enable = true;
@@ -124,7 +114,6 @@
 
       ghc
       cabal-install
-      cachix
       haskellPackages.hoogle
 
       xorg.xhost
