@@ -6,25 +6,13 @@
   imports =
     [
       ./hardware-configuration.nix # hardware scan results
+      ./boot.nix
       "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     ];
 
   nixpkgs.config = {
     allowUnfree = true;
   };
-
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sda";
-
-  boot.initrd.luks.devices = [
-    {
-      name = "root";
-      device = "/dev/sda3";
-      preLVM = true;
-    }
-  ];
 
   nix = {
     binaryCaches = [
