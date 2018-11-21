@@ -38,13 +38,6 @@
     '';
   };
 
-  services.xserver.displayManager.sessionCommands = ''
-    ${pkgs.xlibs.xset}/bin/xset r rate 200 60  # keyboard repeat rate
-
-    while true; do ${pkgs.feh}/bin/feh -z --bg-fill ~/Downloads/Wallpapers;
-      sleep $((5*60)); done &
-  '';
-
   users.users.radivarig = {
     isNormalUser = true; # set some defaults
     extraGroups = [ "wheel" "docker" ];
@@ -141,10 +134,9 @@
       ];
     '';
 
+
     programs.zsh = {
       initExtra = ''
-        xcape -e 'Control_L=Escape'
-
         setopt menu_complete # zsh complete on first tab
         function omz_termsupport_preexec { }
 
@@ -214,11 +206,17 @@
     };
 
     xsession.enable = true;
+    xsession.initExtra = ''
+      xcape -e 'Control_L=Escape' # trigger escape on single lctrl
+
+      ${pkgs.xlibs.xset}/bin/xset r rate 200 60  # keyboard repeat rate
+
+      while true; do ${pkgs.feh}/bin/feh -z --bg-fill ~/Downloads/Wallpapers;
+        sleep $((5*60)); done &
+    '';
     xsession.windowManager.i3 = rec {
       enable = true;
-      extraConfig = ''
-        exec --no-startup-id compton -b
-      '';
+      extraConfig = ''exec --no-startup-id compton -b'';
 
       # config.statusCommand = "${pkgs.i3blocks}";
       config.modifier = "Mod4";
