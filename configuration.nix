@@ -21,13 +21,6 @@
   # networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
 
-  # Select internationalisation properties.
-  # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
-  #   consoleKeyMap = "us";
-  #   defaultLocale = "en_US.UTF-8";
-  # };
-
   time.timeZone = "Europe/Zagreb";
 
   # services.openssh.enable = true;
@@ -45,8 +38,6 @@
   services.nixosManual.showManual = true;
 
   services.xserver.enable = true;
-  # services.xserver.layout = "us";
-  services.xserver.xkbOptions = "ctrl:nocaps";
 
   services.xserver.synaptics = {
     enable = true;
@@ -101,6 +92,7 @@
       cabal-install
       haskellPackages.hoogle
 
+      xcape
       xorg.xhost
       xorg.xkill
       xorg.xev
@@ -111,10 +103,15 @@
       nodejs-10_x
     ];
 
+
+    home.keyboard = {
+      layout = "us";
+      options = [ "ctrl:nocaps" ];
+    };
+
     # todo: extend xkb layout
-    # bind Alt_R + hjkl to arrows
     home.file.".Xmodmap".text = ''
-      ! unbind ralt
+      ! set ralt to modeswitch
       keycode 108 = NoSymbol NoSymbol
       keycode 108 = Mode_switch
 
@@ -156,6 +153,8 @@
 
     programs.zsh = {
       initExtra = ''
+        xcape -e 'Control_L=Escape'
+
         setopt menu_complete # zsh complete on first tab
         function omz_termsupport_preexec { }
 
