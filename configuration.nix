@@ -80,7 +80,6 @@
       xorg.xkill
       xorg.xev
       xorg.xmodmap
-      compton
 
       feh
       nodejs-10_x
@@ -127,13 +126,14 @@
       '';
     };
 
-    home.file.".config/compton.conf".text = ''
+
+    services.compton.enable = true;
+    services.compton.extraOptions = ''
       opacity-rule = [
         "85:class_g *= 'XTerm'",
         "93:class_g *= 'Code'"
       ];
     '';
-
 
     programs.zsh = {
       initExtra = ''
@@ -216,7 +216,6 @@
     '';
     xsession.windowManager.i3 = rec {
       enable = true;
-      extraConfig = ''exec --no-startup-id compton -b'';
 
       # config.statusCommand = "${pkgs.i3blocks}";
       config.modifier = "Mod4";
