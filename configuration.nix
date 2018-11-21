@@ -3,14 +3,13 @@
 # todo: separate to files
 # todo: use full paths from ${pkgs.package}/bin/package
 {
-  imports =
-    [
-      ./hardware-configuration.nix # hardware scan results
-      ./boot.nix
-      ./cachix.nix
-      ./display-manager.nix
-      "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
-    ];
+  imports = [
+    ./hardware-configuration.nix # hardware scan results
+    ./boot.nix
+    ./cachix.nix
+    ./display-manager.nix
+    "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
+  ];
 
   services.nixosManual.showManual = true;
   time.timeZone = "Europe/Zagreb";
@@ -183,6 +182,9 @@
       oh-my-zsh = {
         enable = true;
         theme = "af-magic";
+        plugins = [
+          "colored-man-pages"
+        ];
       };
     };
 
