@@ -12,32 +12,22 @@
       "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
+  services.nixosManual.showManual = true;
+  time.timeZone = "Europe/Zagreb";
+  nixpkgs.config.allowUnfree = true;
 
+  networking.networkmanager.enable = true;
   virtualisation.docker.enable = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  networking.networkmanager.enable = true;
-
-  time.timeZone = "Europe/Zagreb";
-
-  # services.openssh.enable = true;
-
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # services.printing.enable = true;
+  services.xserver.enable = true;
+  services.openssh.enable = true;
+  services.printing.enable = true;
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  services.nixosManual.showManual = true;
-
-  services.xserver.enable = true;
+  # change ONLY after NixOS release notes say so (db servers can break)
+  system.stateVersion = "18.09"; # Did you read the comment?
 
   services.xserver.synaptics = {
     enable = true;
@@ -334,6 +324,4 @@
     };
   };
 
-  # change ONLY after NixOS release notes say so (db servers can break)
-  system.stateVersion = "18.09"; # Did you read the comment?
 }
