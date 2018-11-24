@@ -232,6 +232,9 @@
         "XF86MonBrightnessUp"   = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -inc 10";
         "XF86MonBrightnessDown" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -dec 10";
 
+        "${mod}+F11" = "exec compton-trans -c -5";
+        "${mod}+F12" = "exec compton-trans -c +5";
+
         "${mod}+Return" = "exec ~/.terminalAtFocusedTitlePath.sh";
         "${mod}+Shift+q" = "kill";
         "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run -i";
