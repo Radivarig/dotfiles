@@ -127,13 +127,10 @@
 
 
     services.compton.enable = true;
-    services.compton.extraOptions = ''
-      opacity-rule = [
-        "85:class_g *= 'XTerm'",
-        "93:class_g *= 'Code'"
-      ];
-    '';
-
+    services.compton.opacityRule = [
+      "85:class_g *= 'XTerm'"
+      "93:class_g *= 'Code'"
+    ];
     programs.zsh = {
       initExtra = ''
         setopt menu_complete # zsh complete on first tab
@@ -158,6 +155,7 @@
         edit = "$EDITOR";
         mkdir = "mkdir -pv"; # create parent
         del = "trash-put";
+
         nr = ''nix repl "<nixpkgs>" "<nixpkgs/nixos>"'';
 
         # add prompt
