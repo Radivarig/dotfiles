@@ -157,6 +157,7 @@
         del = "trash-put";
 
         nr = ''nix repl "<nixpkgs>" "<nixpkgs/nixos>"'';
+        ns = "nix-shell --run 'zsh'";
 
         # add prompt
         mv = "mv -i";
