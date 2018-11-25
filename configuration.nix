@@ -111,22 +111,6 @@
       keycode 62 = Return
     '';
 
-    home.file.".terminalAtFocusedTitlePath.sh" = {
-      executable = true;
-      text = ''
-        # opens a new terminal at path contained in the focused window title
-        title="$(${pkgs.xdotool}/bin/xdotool getactivewindow getwindowname)"
-        # get everything from first to last slash
-        CURRENT_PATH=$(echo ''${title} | ${pkgs.perl}/bin/perl -nE '$_ =~ m| ( ~?/[^\s]* ) |x; say "$1"')
-        # emulate tilda expansion since path is used in a string
-        CURRENT_PATH="''${CURRENT_PATH/\~/$HOME}"
-        # if it is a file use parent dir
-        [ -f "$CURRENT_PATH" ] && CURRENT_PATH="$(dirname $CURRENT_PATH)"
-        cd "$CURRENT_PATH"
-        i3-sensible-terminal
-      '';
-    };
-
     services.compton.enable = true;
     services.compton.opacityRule = [
       "70:class_g *= 'XTerm'"
@@ -225,6 +209,7 @@
         mod = config.modifier;
         resizeSmall = "1"; resizeBig = "5";
       # todo: generate arrows/hjkl bindings over functions
+      terminal-at-title-path = import ./terminal-at-title-path.nix {inherit pkgs;};
       in {
         "XF86AudioMute"        = "exec amixer sset 'Master' toggle";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
@@ -236,7 +221,7 @@
         "${mod}+F11" = "exec compton-trans -c -5";
         "${mod}+F12" = "exec compton-trans -c +5";
 
-        "${mod}+Return" = "exec ~/.terminalAtFocusedTitlePath.sh";
+        "${mod}+Return" = "exec ${terminal-at-title-path}/bin/terminal-at-title-path";
         "${mod}+Shift+q" = "kill";
         "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run -i";
 
