@@ -64,6 +64,8 @@
       vlc
       pavucontrol
 
+      kazam
+
       tldr
       wget
       zip
@@ -125,15 +127,13 @@
       '';
     };
 
-
     services.compton.enable = true;
     services.compton.opacityRule = [
-      "85:class_g *= 'XTerm'"
-      "93:class_g *= 'Code'"
+      "70:class_g *= 'XTerm'"
+      "90:class_g *= 'Code'"
     ];
     programs.zsh = {
       initExtra = ''
-        setopt menu_complete # zsh complete on first tab
         function omz_termsupport_preexec { }
 
         # does not work from sessionCommands
@@ -158,6 +158,7 @@
 
         nr = ''nix repl "<nixpkgs>" "<nixpkgs/nixos>"'';
         ns = "nix-shell --run 'zsh'";
+        nb = "nix-build";
 
         # add prompt
         mv = "mv -i";
