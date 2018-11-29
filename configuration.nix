@@ -70,7 +70,9 @@
 
       tldr
       wget
-      zip
+      zip unzip
+
+      hexchat
 
       python-with-my-packages
 
@@ -180,9 +182,7 @@
       };
     };
 
-    programs.emacs = {
-      enable = true;
-    };
+    programs.emacs.enable = true;
 
     programs.chromium.enable = true;
 
