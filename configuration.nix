@@ -58,6 +58,7 @@
       python-with-my-packages = pkgs.python3.withPackages my-python-packages;
     in with pkgs; [
       trash-cli
+      clipit hicolor-icon-theme
 
       source-code-pro # font
       vscode
@@ -89,7 +90,6 @@
       feh
       nodejs-10_x
     ];
-
 
     home.keyboard = {
       layout = "us";
@@ -139,6 +139,8 @@
 
         # make cd clear and ls
         cd() { builtin cd "$@" && clear && ls --group-directories-first ; }
+
+        echo -ne "\e]12;cyan\a"
       '';
 
       shellAliases = {
