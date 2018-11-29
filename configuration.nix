@@ -58,13 +58,15 @@
       python-with-my-packages = pkgs.python3.withPackages my-python-packages;
     in with pkgs; [
       trash-cli
-      source-code-pro
+
+      source-code-pro # font
       vscode
 
       vlc
       pavucontrol
 
       kazam
+      gnome3.gnome-terminal
 
       tldr
       wget
@@ -114,8 +116,14 @@
     services.compton.enable = true;
     services.compton.opacityRule = [
       "70:class_g *= 'XTerm'"
+      "70:class_g *= 'Gnome-terminal'"
       "90:class_g *= 'Code'"
     ];
+
+    home.sessionVariables = {
+      TERMINAL="gnome-terminal";
+    };
+
     programs.zsh = {
       initExtra = ''
         function omz_termsupport_preexec { }
