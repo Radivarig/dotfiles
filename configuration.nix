@@ -164,6 +164,7 @@
         gds = "git diff --staged";
         gs = "git status";
         ga = "git add";
+        gap = "git add --patch";
         gc = "git commit --message";
         gca = "git commit --amend";
         gb = "git branch --all";
