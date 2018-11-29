@@ -44,7 +44,7 @@
     shell = pkgs.zsh;
   };
 
-  home-manager.users.radivarig = {
+  home-manager.users.radivarig = with pkgs.lib; foldr (a: b: (attrsets.recursiveUpdate a b)) {
     programs.git = {
       enable = true;
       userName = "Radivarig";
@@ -187,19 +187,6 @@
 
     programs.chromium.enable = true;
 
-    xresources.properties = {
-      "xterm*background" = "black";
-      "xterm*foreground" = "white";
-      "xterm*metaSendsEscape" = "true";
-      "xterm*selectToClipboard" = "true";
-      "xterm*cursorBlink" = "1";
-      "xterm*titeInhibit" = "true";
-      "xterm*translations" = '' #override \n\
-        Ctrl <Key> minus: smaller-vt-font() \n\
-        Ctrl <Key> plus: larger-vt-font()
-      '';
-    };
-
     xsession.enable = true;
     xsession.initExtra = ''
       xcape -e 'Control_L=Escape' # trigger escape on single lctrl
@@ -319,6 +306,7 @@
 
       };
     };
-  };
-
+  } [
+    (import ./xterm.nix {})
+  ];
 }
