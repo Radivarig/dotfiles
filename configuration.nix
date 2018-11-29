@@ -220,7 +220,7 @@
       # todo: generate arrows/hjkl bindings over functions
       terminal-at-title-path = import ./terminal-at-title-path.nix {inherit pkgs;};
       in {
-        "Shift+Escape"         = "";
+        "Shift+Escape"         = "exec echo ''";
         "XF86AudioMute"        = "exec amixer sset 'Master' toggle";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
         "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
