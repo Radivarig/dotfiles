@@ -7,6 +7,7 @@
     ./hardware-configuration.nix # hardware scan results
     ./boot.nix
     ./cachix.nix
+    ./printer.nix
     ./display-manager.nix
     "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   ];
@@ -20,7 +21,6 @@
 
   services.xserver.enable = true;
   services.openssh.enable = true;
-  services.printing.enable = true;
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
