@@ -19,7 +19,6 @@
   networking.networkmanager.enable = true;
   virtualisation.docker.enable = true;
 
-  services.xserver.enable = true;
   services.openssh.enable = true;
 
   sound.enable = true;
