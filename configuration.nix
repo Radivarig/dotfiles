@@ -67,7 +67,7 @@
       pavucontrol
 
       kazam
-      gnome3.gnome-terminal
+      lxterminal
 
       tldr
       wget
@@ -117,14 +117,15 @@
 
     services.compton.enable = true;
     services.compton.opacityRule = [
-      "70:class_g *= 'XTerm'"
-      "70:class_g *= 'Gnome-terminal'"
+      "70:class_g *= 'Lxterminal'"
       "90:class_g *= 'Code'"
     ];
 
     home.sessionVariables = {
-      TERMINAL="gnome-terminal";
+      TERMINAL="lxterminal";
     };
+
+    home.file.".config/lxterminal/lxterminal.conf".text = import ./lxterminal.conf.nix { inherit pkgs; };
 
     programs.zsh = {
       initExtra = ''
@@ -309,6 +310,5 @@
       };
     };
   } [
-    (import ./xterm.nix {})
   ];
 }
