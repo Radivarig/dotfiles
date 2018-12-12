@@ -213,14 +213,14 @@
       in {
         "Shift+Escape"         = "exec echo ''";
         "XF86AudioMute"        = "exec amixer sset 'Master' toggle";
-        "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
-        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+        "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -7%";
+        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +3%";
 
-        "XF86MonBrightnessUp"   = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -inc 10";
-        "XF86MonBrightnessDown" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -dec 10";
+        "XF86MonBrightnessUp"   = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -inc 7";
+        "XF86MonBrightnessDown" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -dec 3";
 
-        "${mod}+F11" = "exec compton-trans -c -5";
-        "${mod}+F12" = "exec compton-trans -c +5";
+        "${mod}+F11" = "exec compton-trans -c -7";
+        "${mod}+F12" = "exec compton-trans -c +3";
 
         "${mod}+Return" = "exec ${terminal-at-title-path}/bin/terminal-at-title-path";
         "${mod}+Shift+q" = "kill";
