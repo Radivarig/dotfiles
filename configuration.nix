@@ -123,6 +123,7 @@
 
     home.sessionVariables = {
       TERMINAL="lxterminal";
+      TERM="TERM=vt100";
     };
 
     home.file.".config/lxterminal/lxterminal.conf".text = import ./lxterminal.conf.nix { inherit pkgs; };
