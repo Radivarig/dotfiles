@@ -105,9 +105,9 @@
       keycode 105 = BackSpace
 
       ! ralt + hjkl to arrows
-      keysym j = j J Left NoSymbol NoSymbol NoSymbol
-      keysym k = k K Down NoSymbol NoSymbol NoSymbol
-      keysym i = i I Up NoSymbol NoSymbol NoSymbol
+      keysym h = h H Left NoSymbol NoSymbol NoSymbol
+      keysym j = j J Down NoSymbol NoSymbol NoSymbol
+      keysym k = k K Up NoSymbol NoSymbol NoSymbol
       keysym l = l L Right NoSymbol lstroke Lstroke
 
       ! rshift to enter
@@ -225,15 +225,15 @@
         "${mod}+Shift+q" = "kill";
         "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run -i";
 
-        # move focus/move jkil
-        "${mod}+j"  = "focus left";
-        "${mod}+k"  = "focus down";
-        "${mod}+i"    = "focus up";
+        # move focus/move hjkl
+        "${mod}+h"  = "focus left";
+        "${mod}+j"  = "focus down";
+        "${mod}+k"    = "focus up";
         "${mod}+l" = "focus right";
 
-        "${mod}+Shift+j"  = "move left";
-        "${mod}+Shift+k"  = "move down";
-        "${mod}+Shift+i"    = "move up";
+        "${mod}+Shift+h"  = "move left";
+        "${mod}+Shift+j"  = "move down";
+        "${mod}+Shift+k"    = "move up";
         "${mod}+Shift+l" = "move right";
 
         # # move focus/move arrows
@@ -296,15 +296,15 @@
         "${mod}+Ctrl+Shift+Up"    = "resize grow   height ${resizeBig} px or ${resizeBig} ppt";
         "${mod}+Ctrl+Shift+Right" = "resize grow   width  ${resizeBig} px or ${resizeBig} ppt";
 
-        # resize for jkil
-        "${mod}+Ctrl+j"  = "resize shrink width  ${resizeSmall} px or ${resizeSmall} ppt";
-        "${mod}+Ctrl+k"  = "resize shrink height ${resizeSmall} px or ${resizeSmall} ppt";
-        "${mod}+Ctrl+i"  = "resize grow   height ${resizeSmall} px or ${resizeSmall} ppt";
+        # resize for hjkl
+        "${mod}+Ctrl+h"  = "resize shrink width  ${resizeSmall} px or ${resizeSmall} ppt";
+        "${mod}+Ctrl+j"  = "resize shrink height ${resizeSmall} px or ${resizeSmall} ppt";
+        "${mod}+Ctrl+k"  = "resize grow   height ${resizeSmall} px or ${resizeSmall} ppt";
         "${mod}+Ctrl+l"  = "resize grow   width  ${resizeSmall} px or ${resizeSmall} ppt";
 
-        "${mod}+Ctrl+Shift+j"  = "resize shrink width  ${resizeBig} px or ${resizeBig} ppt";
-        "${mod}+Ctrl+Shift+k"  = "resize shrink height ${resizeBig} px or ${resizeBig} ppt";
-        "${mod}+Ctrl+Shift+i"  = "resize grow   height ${resizeBig} px or ${resizeBig} ppt";
+        "${mod}+Ctrl+Shift+h"  = "resize shrink width  ${resizeBig} px or ${resizeBig} ppt";
+        "${mod}+Ctrl+Shift+j"  = "resize shrink height ${resizeBig} px or ${resizeBig} ppt";
+        "${mod}+Ctrl+Shift+k"  = "resize grow   height ${resizeBig} px or ${resizeBig} ppt";
         "${mod}+Ctrl+Shift+l"  = "resize grow   width  ${resizeBig} px or ${resizeBig} ppt";
 
       };
