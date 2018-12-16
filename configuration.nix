@@ -90,13 +90,14 @@
       nodejs-10_x
     ];
 
-    home.keyboard = {
-      layout = "us";
-      options = [ "ctrl:nocaps" ];
-    };
-
     # todo: extend xkb layout
     home.file.".Xmodmap".text = ''
+      ! ctrl to capslock
+      clear lock
+      clear control
+      keycode 66 = Control_L
+      add control = Control_L Control_R
+
       ! set ralt to modeswitch
       keycode 108 = NoSymbol NoSymbol
       keycode 108 = Mode_switch
@@ -122,17 +123,15 @@
 
     home.sessionVariables = {
       TERMINAL="lxterminal";
-      TERM="TERM=vt100";
     };
 
     home.file.".config/lxterminal/lxterminal.conf".text = import ./lxterminal.conf.nix { inherit pkgs; };
 
     programs.zsh = {
       initExtra = ''
-        function omz_termsupport_preexec { }
+        TERM=vt100
 
-        # does not work from sessionCommands
-        ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
+        function omz_termsupport_preexec { }
 
         # use array since no word split in zsh
         export EDITOR=(emacs -nw -q)
@@ -193,6 +192,8 @@
     xsession.enable = true;
     xsession.initExtra = ''
       xcape -e 'Control_L=Escape' # trigger escape on single lctrl
+
+      ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
 
       ${pkgs.xlibs.xset}/bin/xset r rate 200 60  # keyboard repeat rate
 
