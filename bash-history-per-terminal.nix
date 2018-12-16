@@ -10,7 +10,7 @@ COMMON_HISTFILE="$HISTFILE" # file to which to append commands
 TTY_HISTFILE="$HOME/.bhpt/tty_"`basename $(tty)`
 "install" -D /dev/null "$TTY_HISTFILE"
 
-clear_tty_history_list(){ "history" -c;}
+clear_loaded_hist_list(){ "history" -c;}
 flag_append_to_histfile(){ "history" -a;}
 load_histfile_to_list(){ "history" -r;}
 
@@ -28,7 +28,7 @@ prompt_cmd() {
     then "echo" "$LAST_SESS_CMD" >> "$COMMON_HISTFILE"
   fi
 
-  clear_tty_history_list
+  clear_loaded_hist_list
   set_histfile_to_common
   load_histfile_to_list
   set_histfile_to_tty
