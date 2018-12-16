@@ -129,11 +129,13 @@
     home.file.".config/lxterminal/lxterminal.conf".text = import ./lxterminal.conf.nix { inherit pkgs; };
 
     programs.bash = let
+      bash-history-session-handler = import ./bash-history-session-handler.nix {inherit pkgs; };
     in {
       enable = true;
       initExtra = ''
         TERM=vt100 # persist less output
 
+        . ${bash-history-session-handler}
 
         # make cd clear and ls
         cd() { builtin cd "$@" && clear && ls --group-directories-first ; }
