@@ -14,34 +14,35 @@ SESS_HISTFILE="$TTY_HISTFILE"_session
 \cp /dev/null "$SESS_HISTFILE"
 
 clear_hist_list(){ \history -c;}
-append_new_to_file(){ \history -a;}
-read_file_to_list(){ \history -r;}
-write_list_to_file(){ \history -w;}
+set_flag_append_to_histfile(){ \history -a;}
+read_histfile_to_list(){ \history -r;}
+write_list_to_histfile(){ \history -w;}
 
-set_file_to_session(){ HISTFILE="$SESS_HISTFILE";}
-set_file_to_common(){ HISTFILE="$COMMON_HISTFILE";}
-set_file_to_tty(){ HISTFILE="$TTY_HISTFILE";}
+set_histfile_to_session(){ HISTFILE="$SESS_HISTFILE";}
+set_histfile_to_common(){ HISTFILE="$COMMON_HISTFILE";}
+set_histfile_to_tty(){ HISTFILE="$TTY_HISTFILE";}
 
 prompt_cmd() {
-  set_file_to_session
-  append_new_to_file
+  set_histfile_to_session
+  set_flag_append_to_histfile
 
   LAST_SESS=$(tail -n 1 "$SESS_HISTFILE")
   LAST_HIST=$(tail -n 1 "$COMMON_HISTFILE")
 
+  # add to common file, only once, skip empty
   if [[ "$LAST_SESS" != "$LAST_HIST" && "$LAST_SESS" != "" ]]
     then \echo "$LAST_SESS" >> "$COMMON_HISTFILE"
   fi
   clear_hist_list
 
-  set_file_to_common
-  read_file_to_list
+  set_histfile_to_common
+  read_histfile_to_list
 
-  set_file_to_session
-  read_file_to_list
+  set_histfile_to_session
+  read_histfile_to_list
 
-  set_file_to_tty
-  write_list_to_file
+  set_histfile_to_tty
+  write_list_to_histfile
 }
 PROMPT_COMMAND="prompt_cmd;$PROMPT_COMMAND"
 
