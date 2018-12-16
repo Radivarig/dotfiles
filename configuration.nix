@@ -146,7 +146,6 @@
       shellAliases = {
         ".." = "cd ..";
         "cd.." = "cd ..";
-        "cd../" = "cd ..";
         "..." = "cd ../..";
 
         mkdir = "mkdir -pv"; # create parent
