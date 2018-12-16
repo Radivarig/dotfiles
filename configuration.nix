@@ -40,7 +40,6 @@
     isNormalUser = true; # set some defaults
     extraGroups = [ "wheel" "docker" ];
     uid = 1000;
-    shell = pkgs.zsh;
   };
 
   home-manager.users.radivarig = with pkgs.lib; foldr (a: b: (attrsets.recursiveUpdate a b)) {
@@ -121,21 +120,20 @@
       "90:class_g *= 'Code'"
     ];
 
-    home.sessionVariables = {
+    home.sessionVariables = rec {
       TERMINAL="lxterminal";
+      EDITOR="emacs -nw -q";
+      GIT_EDITOR="${EDITOR}";
     };
 
     home.file.".config/lxterminal/lxterminal.conf".text = import ./lxterminal.conf.nix { inherit pkgs; };
 
-    programs.zsh = {
+    programs.bash = let
+    in {
+      enable = true;
       initExtra = ''
-        TERM=vt100
+        TERM=vt100 # persist less output
 
-        function omz_termsupport_preexec { }
-
-        # use array since no word split in zsh
-        export EDITOR=(emacs -nw -q)
-        export GIT_EDITOR=$=EDITOR
 
         # make cd clear and ls
         cd() { builtin cd "$@" && clear && ls --group-directories-first ; }
@@ -145,15 +143,15 @@
 
       shellAliases = {
         ".." = "cd ..";
-        "..." = "cd ../..";
         "cd.." = "cd ..";
+        "cd../" = "cd ..";
+        "..." = "cd ../..";
 
-        edit = "$EDITOR";
         mkdir = "mkdir -pv"; # create parent
         del = "trash-put";
 
         nr = ''nix repl "<nixpkgs>" "<nixpkgs/nixos>"'';
-        ns = "nix-shell --run 'zsh'";
+        ns = "nix-shell"; # --run 'your-shell'
         nb = "nix-build";
 
         # add prompt
@@ -173,15 +171,6 @@
         gcp = "git cherry-pick";
         gp = "git pull";
         gm = "git merge";
-      };
-
-      enable = true;
-      oh-my-zsh = {
-        enable = true;
-        theme = "af-magic";
-        plugins = [
-          "colored-man-pages"
-        ];
       };
     };
 
