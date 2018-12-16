@@ -128,6 +128,11 @@
 
     home.file.".config/lxterminal/lxterminal.conf".text = import ./lxterminal.conf.nix { inherit pkgs; };
 
+    home.file.".inputrc".text = ''
+      $include /etc/inputrc
+      set completion-ignore-case on
+    '';
+
     programs.bash = let
       bash-history-per-terminal = import ./bash-history-per-terminal.nix {inherit pkgs; };
     in {
