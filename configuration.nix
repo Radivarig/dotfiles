@@ -137,6 +137,15 @@
       bash-history-per-terminal = import ./bash-history-per-terminal.nix {inherit pkgs; };
     in {
       enable = true;
+
+      # not called for subshells
+      profileExtra = ''
+        # dedupe history lines and keep last occurance
+        "tac" "${historyFile}" | "awk" '!x[$0]++' | \
+        "tac" > "${historyFile}""__tmp"; "mv" "${historyFile}""__tmp" ${historyFile}
+      '';
+
++
       initExtra = ''
         TERM=vt100 # persist less output
 
