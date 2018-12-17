@@ -156,6 +156,13 @@
         ${less-color-vars}
         . ${bash-history-per-terminal}
 
++
+        # show git branch
+        parse_git_branch(){ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/';}
+
+        # prompt string
+        PS1='\u@\h \w\[\033[32m\]`parse_git_branch`\[\033[00m\]\n$ '
+
         set_current_dir_as_title='echo -ne "\033]0; $(dirs)/\007"' # for terminal-at-title-path
         PROMPT_COMMAND="$set_current_dir_as_title;$PROMPT_COMMAND"
 
