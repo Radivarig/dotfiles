@@ -142,6 +142,9 @@
 
         . ${bash-history-per-terminal}
 
+        set_current_dir_as_title='echo -ne "\033]0; $(dirs)/\007"' # for terminal-at-title-path
+        PROMPT_COMMAND="$set_current_dir_as_title;$PROMPT_COMMAND"
+
         # make cd clear and ls
         cd() { builtin cd "$@" && clear && ls --group-directories-first ; }
 
