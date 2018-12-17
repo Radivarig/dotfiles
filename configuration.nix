@@ -136,6 +136,9 @@
       less-color-vars = import ./less-color-vars.nix;
     in rec {
       enable = true;
++
+      historyFile = "$HOME/.history";
+      historySize = 10000;
 
       # not called for subshells
       profileExtra = ''
