@@ -155,12 +155,11 @@
 
       initExtra = ''
         export LESS="-R -X" # raw colors, keep output after exit
-
-
         ${less-color-vars}
         . ${bash-history-per-terminal}
 
-+
+        stty -ixon # disable "flow control" (ctrl+S/Q), for forward search
+
         # show git branch
         parse_git_branch(){ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/';}
 
