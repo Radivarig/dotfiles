@@ -122,8 +122,6 @@
 
     home.sessionVariables = rec {
       TERMINAL="lxterminal";
-      EDITOR="emacs -nw -q";
-      GIT_EDITOR="${EDITOR}";
     };
 
     home.file.".config/lxterminal/lxterminal.conf".text = import ./lxterminal.conf.nix { inherit pkgs; };
@@ -145,7 +143,11 @@
         "tac" > "${historyFile}""__tmp"; "mv" "${historyFile}""__tmp" ${historyFile}
       '';
 
-+
+      sessionVariables = rec {
+        EDITOR="emacs -nw -q";
+        GIT_EDITOR="${EDITOR}";
+      };
+
       initExtra = ''
         export LESS="-X" # keep output after exit
 
