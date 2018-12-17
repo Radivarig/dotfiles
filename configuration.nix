@@ -147,7 +147,8 @@
 
 +
       initExtra = ''
-        TERM=vt100 # persist less output
+        export LESS="-X" # keep output after exit
+
 
         . ${bash-history-per-terminal}
 
