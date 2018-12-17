@@ -133,7 +133,8 @@
 
     programs.bash = let
       bash-history-per-terminal = import ./bash-history-per-terminal.nix {inherit pkgs; };
-    in {
+      less-color-vars = import ./less-color-vars.nix;
+    in rec {
       enable = true;
 
       # not called for subshells
@@ -149,9 +150,10 @@
       };
 
       initExtra = ''
-        export LESS="-X" # keep output after exit
+        export LESS="-R -X" # raw colors, keep output after exit
 
 
+        ${less-color-vars}
         . ${bash-history-per-terminal}
 
         set_current_dir_as_title='echo -ne "\033]0; $(dirs)/\007"' # for terminal-at-title-path
