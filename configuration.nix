@@ -136,7 +136,8 @@
       less-color-vars = import ./less-color-vars.nix;
     in rec {
       enable = true;
-+
+      enableAutojump = true;
+
       historyFile = "$HOME/.history";
       historySize = 10000;
 
