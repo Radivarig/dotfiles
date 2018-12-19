@@ -184,7 +184,7 @@
         del = "trash-put";
 
         nr = ''nix repl "<nixpkgs>" "<nixpkgs/nixos>"'';
-        ns = "nix-shell"; # --run 'your-shell'
+        ns = "nix-shell --run $SHELL";
         nb = "nix-build";
 
         # add prompt
