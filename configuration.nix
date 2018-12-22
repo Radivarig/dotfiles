@@ -118,6 +118,8 @@
     services.compton.opacityRule = [
       "70:class_g *= 'Lxterminal'"
       "90:class_g *= 'Code'"
+      "80:window_type = 'dock' && class_g = 'i3bar'"
+      "70:class_g *= 'i3-frame'"
     ];
 
     home.sessionVariables = rec {
