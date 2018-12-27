@@ -219,9 +219,9 @@
 
     xsession.enable = true;
     xsession.initExtra = ''
-      xcape -e 'Control_L=Escape' # trigger escape on single lctrl
-
       ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
+
+      xcape -e 'Control_L=Escape' # trigger escape on single lctrl
 
       ${pkgs.xlibs.xset}/bin/xset r rate 200 60  # keyboard repeat rate
 
