@@ -156,6 +156,7 @@
       };
 
       initExtra = ''
+        TERM=xterm-256color # make backspace work in ssh
         export LESS="-R -X" # raw colors, keep output after exit
         ${less-color-vars}
         . ${bash-history-per-terminal}
