@@ -159,6 +159,9 @@
         TERM=xterm-256color # make backspace work in ssh
         export LESS="-R -X" # raw colors, keep output after exit
         ${less-color-vars}
+
+        # skip saving some dangerous commands
+        HISTIGNORE=' *:rm *:rmdir *:del *:sudo *'
         . ${bash-history-per-terminal}
 
         stty -ixon # disable "flow control" (ctrl+S/Q), for forward search
