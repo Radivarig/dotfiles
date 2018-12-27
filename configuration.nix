@@ -190,7 +190,7 @@
         del = "trash-put";
 
         nr = ''nix repl "<nixpkgs>" "<nixpkgs/nixos>"'';
-        ns = "nix-shell --run $SHELL";
+        ns = ''nix-shell --command "/run/current-system/sw/bin/bash" '';
         nb = "nix-build";
 
         # add prompt
