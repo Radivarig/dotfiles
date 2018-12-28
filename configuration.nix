@@ -166,19 +166,19 @@
 
         stty -ixon # disable "flow control" (ctrl+S/Q), for forward search
 
-        # show git branch
-        parse_git_branch(){ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/';}
+        parse_git_branch(){ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /';}
 
-        # prompt string
-        PS1='\u@\h \w\[\033[32m\]`parse_git_branch`\[\033[00m\]\n$ '
-
-        set_current_dir_as_title='echo -ne "\033]0; $(dirs)/\007"' # for terminal-at-title-path
+        set_current_dir_as_title='echo -ne "\e]0; $(dirs)/\007"' # for terminal-at-title-path
         PROMPT_COMMAND="$set_current_dir_as_title;$PROMPT_COMMAND"
 
         # make cd clear and ls
         cd() { builtin cd "$@" && clear && ls --group-directories-first ; }
 
-        echo -ne "\e]12;cyan\a"
+        # prompt string
+        SHELL_NAME=`[[ ! -z $name ]] && echo "$name"`
+        PS1='\[\e[94m\]$SHELL_NAME \[\e[32m\]`parse_git_branch`\[\e[90m\]λ \[\e[00m\]'
+        echo -ne "\e]12;cyan\a" # cursor color
+        echo -e -n "\x1b[\x35 q" # cursor blinking bar
       '';
 
       shellAliases = {
