@@ -49,12 +49,7 @@
       userEmail = "reslav.hollos@gmail.com";
     };
 
-    home.packages = let
-      my-python-packages = python-packages: with python-packages; [
-        pylint
-      ];
-      python-with-my-packages = pkgs.python3.withPackages my-python-packages;
-    in with pkgs; [
+    home.packages = with pkgs; [
       trash-cli
       clipit hicolor-icon-theme
 
@@ -72,8 +67,6 @@
       zip unzip
 
       hexchat
-
-      python-with-my-packages
 
       ghc
       cabal-install
