@@ -50,6 +50,7 @@
     };
 
     home.packages = with pkgs; [
+      ranger highlight
       trash-cli
       clipit hicolor-icon-theme
 
@@ -126,9 +127,12 @@
       set completion-ignore-case on
     '';
 
+
     programs.bash = let
       bash-history-per-terminal = import ./bash-history-per-terminal.nix {inherit pkgs; };
       less-color-vars = import ./less-color-vars.nix;
+      ranger-cd = builtins.replaceStrings ["/usr/bin/ranger"] ["${pkgs.ranger}/bin/ranger"]
+        (builtins.readFile "${pkgs.ranger.src}/examples/bash_automatic_cd.sh");
     in rec {
       enable = true;
       enableAutojump = true;
@@ -157,6 +161,8 @@
         HISTIGNORE=' *:rm *:rmdir *:del *:sudo *'
         . ${bash-history-per-terminal}
 
+        ${ranger-cd}
+
         stty -ixon # disable "flow control" (ctrl+S/Q), for forward search
 
         parse_git_branch(){ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /';}
@@ -181,6 +187,7 @@
 
         mkdir = "mkdir -pv"; # create parent
         del = "trash-put";
+        r = "ranger-cd";
 
         nr = ''nix repl "<nixpkgs>" "<nixpkgs/nixos>"'';
         ns = ''nix-shell --command "/run/current-system/sw/bin/bash" '';
