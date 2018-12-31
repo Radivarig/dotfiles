@@ -218,7 +218,9 @@
     programs.chromium.enable = true;
 
     xsession.enable = true;
-    xsession.initExtra = ''
+    xsession.initExtra = let
+      i3-focus-last = import ./i3-focus-last.nix { inherit pkgs; };
+    in ''
       ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
 
       xcape -e 'Control_L=Escape' # trigger escape on single lctrl
@@ -227,6 +229,8 @@
 
       while true; do ${pkgs.feh}/bin/feh -z --bg-fill ~/Downloads/Wallpapers;
         sleep $((5*60)); done &
+
+      ${i3-focus-last} &
     '';
     xsession.windowManager.i3 = rec {
       enable = true;
@@ -284,8 +288,10 @@
         "${mod}+w" = "layout tabbed";
         "${mod}+e" = "layout toggle split";
 
+        "${mod}+Tab" = "[con_mark=_last_focused] focus";
+
         "${mod}+Shift+space" = "floating toggle";
-        "${mod}+Tab" = "focus mode_toggle";
+        "${mod}+Shift+Tab" = "focus mode_toggle";
         "${mod}+minus" = "sticky toggle";
 
         "${mod}+a" = "focus parent";
