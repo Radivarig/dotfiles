@@ -175,7 +175,7 @@
 
         # prompt string
         SHELL_NAME=`[[ ! -z $name ]] && echo "$name"`
-        PS1='\[\e[94m\]$SHELL_NAME \[\e[32m\]`parse_git_branch`\[\e[90m\]λ \[\e[00m\]'
+        PS1='\[\e[33m\]$SHELL_NAME \[\e[32m\]`parse_git_branch`\[\e[90m\]λ \[\e[00m\]'
         echo -ne "\e]12;cyan\a" # cursor color
         echo -e -n "\x1b[\x35 q" # cursor blinking bar
       '';
