@@ -14,7 +14,22 @@
 
   services.nixosManual.showManual = true;
   time.timeZone = "Europe/Zagreb";
+
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    (self: super: rec {
+      # override to add https://github.com/acrisci/i3ipc-glib/pull/9
+      i3ipc-glib = super.i3ipc-glib.overrideAttrs (oldAttrs: {
+        src = pkgs.fetchFromGitHub {
+          owner = "acrisci";
+          repo = "i3ipc-glib";
+          rev = "97ec9a4c5bf0d62572c918b86d31e81691b755d2";
+          sha256 = "04slhnwyyzj97xc9j8y7ggsfqwx955cci1g5phkb1rak1nq4s9p1";
+        };
+      });
+      i3-easyfocus = super.i3-easyfocus.override { inherit i3ipc-glib; };
+    })
+  ];
 
   networking.networkmanager.enable = true;
   virtualisation.docker.enable = true;
@@ -78,6 +93,7 @@
       xorg.xkill
       xorg.xev
       xorg.xmodmap
+      i3-easyfocus
 
       feh
       nodejs-10_x
@@ -257,6 +273,7 @@
         "${mod}+Return" = "exec ${terminal-at-title-path}/bin/terminal-at-title-path";
         "${mod}+Shift+q" = "kill";
         "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run -i";
+        "${mod}+f" = "exec ${pkgs.i3-easyfocus}/bin/i3-easyfocus";
 
         # move focus/move hjkl
         "${mod}+h"  = "focus left";
@@ -282,7 +299,7 @@
 
         "${mod}+v" = "split v";
         "${mod}+b" = "split h";
-        "${mod}+f" = "fullscreen toggle";
+        "${mod}+space" = "fullscreen toggle";
 
         "${mod}+s" = "layout stacking";
         "${mod}+w" = "layout tabbed";
