@@ -62,6 +62,11 @@
       enable = true;
       userName = "Radivarig";
       userEmail = "reslav.hollos@gmail.com";
+      extraConfig = {
+        core = {
+          whitespace = "cr-at-eol";
+        };
+      };
     };
 
     home.packages = with pkgs; [
