@@ -175,6 +175,7 @@
 
       initExtra = ''
         TERM=xterm-256color # make backspace work in ssh
+        export MANWIDTH=3000 # have manpages not trim lines to initial terminal size otherwise fullscreen is useless
         export LESS="-R -X" # raw colors, keep output after exit
         ${less-color-vars}
 
