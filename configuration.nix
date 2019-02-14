@@ -261,7 +261,12 @@
       config.modifier = "Mod4";
       config.keybindings = let
         mod = config.modifier;
-        resizeSmall = "1"; resizeBig = "5";
+        resizeSize = "5";
+        center-mouse = pkgs.writeShellScriptBin "center-mouse" ''
+          sh -c 'eval `${pkgs.xdotool}/bin/xdotool getactivewindow getwindowgeometry --shell`
+          ${pkgs.xdotool}/bin/xdotool mousemove $((X+WIDTH/2)) $((Y+HEIGHT/2))'
+        '';
+
       # todo: generate arrows/hjkl bindings over functions
       terminal-at-title-path = import ./terminal-at-title-path.nix {inherit pkgs;};
       in {
@@ -282,26 +287,15 @@
         "${mod}+f" = "exec ${pkgs.i3-easyfocus}/bin/i3-easyfocus";
 
         # move focus/move hjkl
-        "${mod}+h"  = "focus left";
-        "${mod}+j"  = "focus down";
-        "${mod}+k"    = "focus up";
-        "${mod}+l" = "focus right";
+        "${mod}+h" = "focus left; exec ${center-mouse}/bin/center-mouse";
+        "${mod}+j" = "focus down; exec ${center-mouse}/bin/center-mouse";
+        "${mod}+k" = "focus up; exec ${center-mouse}/bin/center-mouse";
+        "${mod}+l" = "focus right; exec ${center-mouse}/bin/center-mouse";
 
-        "${mod}+Shift+h"  = "move left";
-        "${mod}+Shift+j"  = "move down";
-        "${mod}+Shift+k"    = "move up";
+        "${mod}+Shift+h" = "move left";
+        "${mod}+Shift+j" = "move down";
+        "${mod}+Shift+k" = "move up";
         "${mod}+Shift+l" = "move right";
-
-        # # move focus/move arrows
-        "${mod}+Left"  = "focus left";
-        "${mod}+Down"  = "focus down";
-        "${mod}+Up"    = "focus up";
-        "${mod}+Right" = "focus right";
-
-        "${mod}+Shift+Left"  = "move left";
-        "${mod}+Shift+Down"  = "move down";
-        "${mod}+Shift+Up"    = "move up";
-        "${mod}+Shift+Right" = "move right";
 
         "${mod}+v" = "split v";
         "${mod}+b" = "split h";
@@ -344,27 +338,10 @@
         "${mod}+Shift+r" = "restart";
 
         # resize (also mod + rmb)
-        "${mod}+Ctrl+Left"  = "resize shrink width  ${resizeSmall} px or ${resizeSmall} ppt";
-        "${mod}+Ctrl+Down"  = "resize shrink height ${resizeSmall} px or ${resizeSmall} ppt";
-        "${mod}+Ctrl+Up"    = "resize grow   height ${resizeSmall} px or ${resizeSmall} ppt";
-        "${mod}+Ctrl+Right" = "resize grow   width  ${resizeSmall} px or ${resizeSmall} ppt";
-
-        "${mod}+Ctrl+Shift+Left"  = "resize shrink width  ${resizeBig} px or ${resizeBig} ppt";
-        "${mod}+Ctrl+Shift+Down"  = "resize shrink height ${resizeBig} px or ${resizeBig} ppt";
-        "${mod}+Ctrl+Shift+Up"    = "resize grow   height ${resizeBig} px or ${resizeBig} ppt";
-        "${mod}+Ctrl+Shift+Right" = "resize grow   width  ${resizeBig} px or ${resizeBig} ppt";
-
-        # resize for hjkl
-        "${mod}+Ctrl+h"  = "resize shrink width  ${resizeSmall} px or ${resizeSmall} ppt";
-        "${mod}+Ctrl+j"  = "resize shrink height ${resizeSmall} px or ${resizeSmall} ppt";
-        "${mod}+Ctrl+k"  = "resize grow   height ${resizeSmall} px or ${resizeSmall} ppt";
-        "${mod}+Ctrl+l"  = "resize grow   width  ${resizeSmall} px or ${resizeSmall} ppt";
-
-        "${mod}+Ctrl+Shift+h"  = "resize shrink width  ${resizeBig} px or ${resizeBig} ppt";
-        "${mod}+Ctrl+Shift+j"  = "resize shrink height ${resizeBig} px or ${resizeBig} ppt";
-        "${mod}+Ctrl+Shift+k"  = "resize grow   height ${resizeBig} px or ${resizeBig} ppt";
-        "${mod}+Ctrl+Shift+l"  = "resize grow   width  ${resizeBig} px or ${resizeBig} ppt";
-
+        "${mod}+Ctrl+Shift+h"  = "resize shrink width  ${resizeSize} px or ${resizeSize} ppt";
+        "${mod}+Ctrl+Shift+j"  = "resize shrink height ${resizeSize} px or ${resizeSize} ppt";
+        "${mod}+Ctrl+Shift+k"  = "resize grow   height ${resizeSize} px or ${resizeSize} ppt";
+        "${mod}+Ctrl+Shift+l"  = "resize grow   width  ${resizeSize} px or ${resizeSize} ppt";
       };
     };
   } [
