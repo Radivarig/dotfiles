@@ -1,0 +1,33 @@
+
+[
+  { "key": "ctrl+up", "command": "spaceBlockJumper.moveUp", "when": "textInputFocus" },
+  { "key": "ctrl+down", "command": "spaceBlockJumper.moveDown", "when": "textInputFocus" },
+  { "key": "ctrl+shift+up", "command": "spaceBlockJumper.selectUp", "when": "textInputFocus" },
+  { "key": "ctrl+shift+down", "command": "spaceBlockJumper.selectDown", "when": "textInputFocus" },
+
+  { "key": "shift+alt+left", "command": "workbench.action.moveEditorToPreviousGroup", "when": "editorFocus" },
+  { "key": "shift+alt+right", "command": "workbench.action.moveEditorToNextGroup", "when": "editorFocus" },
+
+  { "key": "ctrl+shift+space","command": "expand_region", "when": "editorTextFocus" },
+  { "key": "alt+f", "command": "findJump.activate" },
+  { "key": "alt+shift+f", "command": "findJump.activateWithSelection" },
+
+  { "key": "ctrl+shift+l", "command": "editor.action.insertCursorAtEndOfEachLineSelected", "when": "editorFocus" },
+
+  { "key": "ctrl+q", "command": "noop" },
+
+  { "key": "ctrl+alt+d", "command": "editor.action.selectHighlights",
+    "when": "editorFocus"},
+
+  { "key": "ctrl+k ctrl+u", "command": "editor.action.transformToUppercase" },
+  { "key": "ctrl+k ctrl+l", "command": "editor.action.transformToLowercase" },
+
+  { "key": "ctrl+shift+k ctrl+shift+m", "command": "merge-conflict.next" },
+
+  { "key": "ctrl+t", "command": "editor.action.transpose" },
+
+  { "key": "alt+-", "command": "workbench.action.navigateBack" },
+
+  { "key": "alt+=", "command": "workbench.action.navigateForward" },
+  { "key": "ctrl+alt+r", "command": "workbench.action.reloadWindow" },
+]

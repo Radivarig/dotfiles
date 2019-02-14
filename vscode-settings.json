@@ -1,0 +1,52 @@
+{
+    "window.menuBarVisibility": "hidden",
+    "editor.minimap.enabled": false,
+    "editor.showFoldingControls": "always",
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "diffEditor.renderSideBySide": false,
+    "editor.cursorWidth": 2,
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    },
+    "editor.renderWhitespace": "boundary",
+    "workbench.colorCustomizations": {
+        "editorWhitespace.foreground": "#0d0d0d",
+        "statusBar.background" : "#1A1A1A",
+        "statusBar.noFolderBackground" : "#212121",
+        "statusBar.debuggingBackground": "#263238"
+    },
+    "editor.wrappingIndent": "indent",
+    "workbench.editor.closeOnFileDelete": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.statusBar.visible": true,
+    "workbench.tree.horizontalScrolling": true,
+    "window.restoreWindows": "all",
+    "search.smartCase": true,
+    "window.zoomLevel": -1,
+    "window.enableMenuBarMnemonics": false,
+    "keyboard.dispatch": "keyCode",
+    "files.hotExit": "onExitAndWindowClose",
+    "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
+    "window.titleBarStyle": "native",
+    "workbench.colorTheme": "keen",
+    "workbench.activityBar.visible": true,
+    "search.location": "sidebar",
+    "python.linting.mypyEnabled": true,
+    "AREPL.whenToExecute": "onSave",
+    "python.linting.pylintArgs": [
+        "--disable=no-name-in-module,invalid-name"
+    ],
+    "workbench.editor.showTabs": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/node_modules*": true,
+    },
+}
