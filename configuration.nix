@@ -218,7 +218,7 @@
         # add prompt
         mv = "mv -i";
         cp = "cp -i";
-        rm = "rm -i";
+        rm = ''echo Use "del" instead of "rm".; exit 1'';
 
         gl = "git log --all --decorate --oneline --graph";
         gd = "git diff";
