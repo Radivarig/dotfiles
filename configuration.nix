@@ -34,7 +34,11 @@
   networking.networkmanager.enable = true;
   virtualisation.docker.enable = true;
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    passwordAuthentication = false;
+    permitRootLogin = "no";
+  };
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
