@@ -76,6 +76,18 @@
     home.packages = with pkgs; [
       ranger highlight
       trash-cli
+      bc
+      qdirstat
+
+      pciutils # lspci setpci
+      rlwrap
+
+      python36Packages.mps-youtube
+
+      # udiskie
+      # sshfs
+
+
       clipit hicolor-icon-theme
 
       source-code-pro # font
@@ -90,6 +102,8 @@
       tldr
       wget
       zip unzip
+      lsof
+      htop
 
       hexchat
 
