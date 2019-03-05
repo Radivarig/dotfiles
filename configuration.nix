@@ -203,7 +203,7 @@
 
         ${ranger-cd}
 
-        stty -ixon # disable "flow control" (ctrl+S/Q), for forward search
+        stty -ixon # disable "flow control" (ctrl+S/Q), to free forward search
 
         parse_git_branch(){ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /';}
 
@@ -214,8 +214,8 @@
         cd() { builtin cd "$@" && clear && ls --group-directories-first ; }
 
         # prompt string
-        SHELL_NAME=`[[ ! -z $name ]] && echo "$name"`
-        PS1='\[\e[33m\]$SHELL_NAME \[\e[32m\]`parse_git_branch`\[\e[90m\]λ \[\e[00m\]'
+        SHELL_NAME=`[[ ! -z $name ]] && echo "$name "`
+        PS1='\[\e[33m\]$SHELL_NAME\[\e[32m\]`parse_git_branch`\[\e[90m\]λ \[\e[00m\]'
         echo -ne "\e]12;cyan\a" # cursor color
         echo -e -n "\x1b[\x35 q" # cursor blinking bar
       '';
@@ -288,13 +288,13 @@
       # todo: generate arrows/hjkl bindings over functions
       terminal-at-title-path = import ./terminal-at-title-path.nix {inherit pkgs;};
       in {
-        "Shift+Escape"         = "exec echo ''";
+        "Shift+Escape"         = "exec echo ''"; # prevent chrome task manager
         "XF86AudioMute"        = "exec amixer sset 'Master' toggle";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -7%";
         "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +3%";
 
-        "XF86MonBrightnessUp"   = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -inc 7";
-        "XF86MonBrightnessDown" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -dec 3";
+        "XF86MonBrightnessDown" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -dec 7";
+        "XF86MonBrightnessUp"   = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -inc 3";
 
         "${mod}+F11" = "exec compton-trans -c -7";
         "${mod}+F12" = "exec compton-trans -c +3";
