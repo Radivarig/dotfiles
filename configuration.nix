@@ -145,6 +145,9 @@
 
       ! rshift to enter
       keycode 62 = Return
+
+      ! add Tab to Alt_L
+      keycode 64 = Tab ISO_Left_Tab Tab ISO_Left_Tab
     '';
 
     services.compton.enable = true;
