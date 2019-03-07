@@ -306,7 +306,58 @@
     xsession.windowManager.i3 = rec {
       enable = true;
 
-      # config.statusCommand = "${pkgs.i3blocks}";
+      extraConfig = ''
+        for_window [class=.*] border normal 1
+        for_window [class=".*"] title_format "<span>%title</span>"
+        font pango:DejaVu Sans Mono 10
+      '';
+
+      config.bars = let
+      in [{
+        fonts = ["DejaVu Sans Mono 10"];
+        colors = rec {
+          background = "#22222299";
+          focusedWorkspace = activeWorkspace;
+          activeWorkspace = {
+            border = "#535F7F";
+            background = "#535F7F";
+            text = "#ffffff";
+          };
+        };
+      }];
+      config.floating.border = 0;
+      config.window = {
+        border = 1;
+      };
+      config.colors = rec {
+        focused = {
+          background = "#535F7F";
+          border = "#535F7F";
+          childBorder = "#535F7F";
+          indicator = "#535F7F";
+          text = "#ffffff";
+        };
+
+        focusedInactive = unfocused;
+        placeholder = unfocused;
+
+        unfocused = {
+          background = "#222222";
+          border = "#000000";
+          childBorder = "#000000";
+          indicator = "#000000";
+          text = "#888888";
+        };
+
+        urgent = {
+          background = "#900000";
+          border = "#2f343a";
+          childBorder = "#900000";
+          indicator = "#900000";
+          text = "#ffffff";
+        };
+      };
+
       config.modifier = "Mod4";
       config.keybindings = let
         mod = config.modifier;
