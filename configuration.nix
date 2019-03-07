@@ -312,6 +312,11 @@
         font pango:DejaVu Sans Mono 10
       '';
 
+      config.startup = [
+        {command = "${pkgs.clipit}/bin/clipit";}
+        {command = "${pkgs.hexchat}/bin/hexchat";}
+      ];
+
       config.bars = let
       in [{
         fonts = ["DejaVu Sans Mono 10"];
