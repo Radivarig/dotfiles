@@ -238,7 +238,8 @@
         cp = "cp -i";
         rm = ''echo Use "del" instead of "rm".; exit 1'';
 
-        gl = "git log --all --decorate --oneline --graph";
+        gl = "git log";
+        gla = "git log --all --decorate --oneline --graph";
         gd = "git diff";
         gds = "git diff --staged";
         gs = "git status";
@@ -246,10 +247,14 @@
         gap = "git add --patch";
         gc = "git commit --message";
         gca = "git commit --amend";
+        gch = "git checkout";
         gb = "git branch --all";
         gcp = "git cherry-pick";
         gp = "git pull";
         gm = "git merge";
+        ggwp = "git push origin HEAD";
+
+        youtube = "mpsyt";
       };
     };
 
