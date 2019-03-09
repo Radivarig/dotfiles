@@ -17,13 +17,13 @@ in {
     extDir = "${homeDir}/.vscode/extensions";
   in rec {
     text = ''
-      ln -sfv ${nixConfDir}/vscode-keybindings.json ${vscodeConfDir}/keybindings.json
-      ln -sfv ${nixConfDir}/vscode-settings.json ${vscodeConfDir}/settings.json
+      ln -sf ${nixConfDir}/vscode-keybindings.json ${vscodeConfDir}/keybindings.json
+      ln -sf ${nixConfDir}/vscode-settings.json ${vscodeConfDir}/settings.json
 
       mkdir -p ${extDir}
       chown ${user}:users ${extDir}
       for x in ${lib.concatMapStringsSep " " toString extensions}; do
-        ln -sfv $x/share/vscode/extensions/* ${extDir}/
+        ln -sf $x/share/vscode/extensions/* ${extDir}/
       done
       chown -R ${user}:users ${extDir}
     '';
