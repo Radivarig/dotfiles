@@ -9,7 +9,7 @@
     ./cachix.nix
     ./printer.nix
     ./display-manager.nix
-    ./vscode.nix
+    ./vscode/default.nix
     "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   ];
 

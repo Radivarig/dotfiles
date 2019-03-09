@@ -2,7 +2,7 @@
 with pkgs;
 let
 user = "radivarig"; # TODO: use module options tom take this from configuration.nix
-extensions = import ./vscode-extensions.nix {inherit pkgs;};
+extensions = import ./extensions.nix {inherit pkgs;};
 in {
   home-manager.users."${user}" = {
     home.packages = [vscode];
@@ -12,13 +12,15 @@ in {
   system.activationScripts.fix-vscode-extensions =
   let
     homeDir = "/home/${user}";
-    nixConfDir = "/etc/nixos";
+    vscodeNixConfDir = "/etc/nixos/vscode";
     vscodeConfDir = "${homeDir}/.config/Code/User";
     extDir = "${homeDir}/.vscode/extensions";
+    configs = ["settings.json" "keybindings.json"];
   in rec {
     text = ''
-      ln -sf ${nixConfDir}/vscode-keybindings.json ${vscodeConfDir}/keybindings.json
-      ln -sf ${nixConfDir}/vscode-settings.json ${vscodeConfDir}/settings.json
+      for x in ${lib.concatMapStringsSep " " toString configs}; do
+        ln -sf ${vscodeNixConfDir}/$x ${vscodeConfDir}/
+      done
 
       mkdir -p ${extDir}
       chown ${user}:users ${extDir}
