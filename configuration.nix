@@ -281,6 +281,7 @@
         ggwp = "git push origin HEAD";
 
         youtube = "mpsyt";
+        pingu = "ping -c 3 google.com";
       };
     };
 
