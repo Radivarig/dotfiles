@@ -32,7 +32,7 @@
     "files.hotExit": "onExitAndWindowClose",
     "window.title": "${dirty}${activeEditorLong}${separator}${rootName}",
     "window.titleBarStyle": "native",
-    "workbench.colorTheme": "keen",
+    "workbench.colorTheme": "x3-alpha",
     "workbench.activityBar.visible": true,
     "search.location": "sidebar",
     "python.linting.mypyEnabled": true,

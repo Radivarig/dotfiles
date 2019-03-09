@@ -9,6 +9,7 @@
     ./cachix.nix
     ./printer.nix
     ./display-manager.nix
+    ./vscode.nix
     "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
   ];
 
@@ -91,7 +92,6 @@
       clipit hicolor-icon-theme
 
       source-code-pro # font
-      vscode
 
       vlc
       pavucontrol
