@@ -190,6 +190,7 @@
     home.file.".inputrc".text = ''
       $include /etc/inputrc
       set completion-ignore-case on
+      set enable-bracketed-paste on
     '';
 
 
