@@ -3,7 +3,23 @@ with pkgs;
 let
 user = "radivarig"; # TODO: use module options tom take this from configuration.nix
 in {
+  nixpkgs.overlays = [
+    (self: super: rec {
+      # override to add https://github.com/acrisci/i3ipc-glib/pull/9
+      i3ipc-glib = super.i3ipc-glib.overrideAttrs (oldAttrs: {
+        src = pkgs.fetchFromGitHub {
+          owner = "acrisci";
+          repo = "i3ipc-glib";
+          rev = "97ec9a4c5bf0d62572c918b86d31e81691b755d2";
+          sha256 = "04slhnwyyzj97xc9j8y7ggsfqwx955cci1g5phkb1rak1nq4s9p1";
+        };
+      });
+      i3-easyfocus = super.i3-easyfocus.override { inherit i3ipc-glib; };
+    })
+  ];
+
   home-manager.users."${user}" = {
+    home.packages = [i3-easyfocus];
     services.compton.opacityRule = [
       "80:window_type = 'dock' && class_g = 'i3bar'"
       "70:class_g *= 'i3-frame'"
