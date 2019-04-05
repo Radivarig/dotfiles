@@ -2,6 +2,9 @@
 
 # todo: separate to files
 # todo: use full paths from ${pkgs.package}/bin/package
+let
+  lockCmd = "${pkgs.i3lock}/bin/i3lock -n -c 111111";
+in
 {
   imports = [
     ./hardware-configuration.nix # hardware scan results
@@ -153,6 +156,9 @@
       ! add Tab to Alt_L
       keycode 64 = Tab ISO_Left_Tab Tab ISO_Left_Tab
     '';
+
+    services.screen-locker.enable = true;
+    services.screen-locker.lockCmd = lockCmd;
 
     services.compton.enable = true;
     services.compton.opacityRule = [
@@ -381,6 +387,7 @@
       # todo: generate arrows/hjkl bindings over functions
       terminal-at-title-path = import ./terminal-at-title-path.nix {inherit pkgs;};
       in {
+        "${mod}+Escape"        = "exec ${lockCmd}";
         "Shift+Escape"         = "exec echo ''"; # prevent chrome task manager
         "XF86AudioMute"        = "exec amixer sset 'Master' toggle";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -7%";
