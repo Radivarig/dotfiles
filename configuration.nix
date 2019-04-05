@@ -10,8 +10,8 @@
     ./printer.nix
     ./display-manager.nix
     ./vscode/default.nix
-    "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
     ./hidpi.nix
+    "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-18.09.tar.gz}/nixos"
   ];
 
   services.nixosManual.showManual = true;
