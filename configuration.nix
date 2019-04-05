@@ -67,6 +67,7 @@
       enable = true;
       userName = "Radivarig";
       userEmail = "reslav.hollos@gmail.com";
+      package = pkgs.gitAndTools.gitFull;
       extraConfig = {
         core = {
           whitespace = "cr-at-eol";
