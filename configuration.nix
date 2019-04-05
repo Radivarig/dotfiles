@@ -13,6 +13,8 @@ in
     ./printer.nix
     ./display-manager.nix
     ./vscode/default.nix
+    ./i3/default.nix
+    ./lxterminal/default.nix
     ./hidpi.nix
     "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-18.09.tar.gz}/nixos"
   ];
