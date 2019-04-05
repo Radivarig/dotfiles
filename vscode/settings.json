@@ -5,6 +5,7 @@
     "editor.tabSize": 2,
     "editor.wordWrap": "on",
     "diffEditor.renderSideBySide": false,
+    "update.channel": "none",
     "editor.cursorWidth": 2,
     "editor.quickSuggestions": {
         "other": true,
