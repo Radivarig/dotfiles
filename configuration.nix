@@ -49,6 +49,7 @@ in
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+  hardware.bluetooth.enable = true;
 
   # change ONLY after NixOS release notes say so (db servers can break)
   system.stateVersion = "18.09"; # Did you read the comment?
@@ -82,6 +83,8 @@ in
     };
 
     home.packages = with pkgs; [
+      blueman
+
       ranger highlight
       trash-cli
       bc
