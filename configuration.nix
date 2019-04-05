@@ -2,9 +2,6 @@
 
 # todo: separate to files
 # todo: use full paths from ${pkgs.package}/bin/package
-let
-  lockCmd = "${pkgs.i3lock}/bin/i3lock -n -c 111111";
-in
 {
   imports = [
     ./hardware-configuration.nix # hardware scan results
@@ -16,6 +13,8 @@ in
     ./i3/default.nix
     ./lxterminal/default.nix
     ./hidpi.nix
+    ./screen-locker.nix
+
     "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-18.09.tar.gz}/nixos"
   ];
 
@@ -146,9 +145,6 @@ in
       ! add Tab to Alt_L
       keycode 64 = Tab ISO_Left_Tab Tab ISO_Left_Tab
     '';
-
-    services.screen-locker.enable = true;
-    services.screen-locker.lockCmd = lockCmd;
 
     services.compton.enable = true;
 
