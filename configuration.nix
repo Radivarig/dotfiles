@@ -13,6 +13,7 @@
     ./i3/default.nix
     ./lxterminal/default.nix
     ./hidpi.nix
+    ./git.nix
     ./screen-locker.nix
 
     "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-18.09.tar.gz}/nixos"
@@ -57,17 +58,6 @@
   };
 
   home-manager.users.radivarig = with pkgs.lib; foldr (a: b: (attrsets.recursiveUpdate a b)) {
-    programs.git = {
-      enable = true;
-      userName = "Radivarig";
-      userEmail = "reslav.hollos@gmail.com";
-      package = pkgs.gitAndTools.gitFull;
-      extraConfig = {
-        core = {
-          whitespace = "cr-at-eol";
-        };
-      };
-    };
 
     home.packages = with pkgs; [
       blueman
@@ -250,29 +240,12 @@
         cp = "cp -i";
         rm = ''echo Use "del" instead of "rm".; exit 1'';
 
-        gl = "git log";
-        gla = "git log --all --decorate --oneline --graph";
-        gd = "git diff";
-        gds = "git diff --staged";
-        gs = "git status";
-        ga = "git add";
-        gap = "git add --patch";
-        gc = "git commit --message";
-        gca = "git commit --amend";
-        gch = "git checkout";
-        gb = "git branch --all";
-        gcp = "git cherry-pick";
-        gp = "git pull";
-        gm = "git merge";
-        ggwp = "git push origin HEAD";
-
         youtube = "mpsyt";
         pingu = "ping -c 3 google.com";
       };
     };
 
     programs.emacs.enable = true;
-
     programs.chromium.enable = true;
 
     xsession.enable = true;
