@@ -11,6 +11,7 @@
     ./display-manager.nix
     ./vscode/default.nix
     "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
+    ./hidpi.nix
   ];
 
   services.nixosManual.showManual = true;
@@ -31,6 +32,8 @@
       i3-easyfocus = super.i3-easyfocus.override { inherit i3ipc-glib; };
     })
   ];
+
+  services.xserver.enable = true;
 
   networking.networkmanager.enable = true;
   virtualisation.docker.enable = true;
