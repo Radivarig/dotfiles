@@ -2,7 +2,7 @@
   general = {
     fontname = "Monospace 10";
     selchars = "-A-Za-z0-9,./?%&#:_";
-    scrollback = 10000;
+    scrollback = 100000;
     bgcolor = "rgb(0,0,0)";
     fgcolor = "rgb(255,255,255)";
     palette_color_0 = "rgb(0,0,0)";
