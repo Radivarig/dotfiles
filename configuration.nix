@@ -213,7 +213,7 @@
         PROMPT_COMMAND="$set_current_dir_as_title;$PROMPT_COMMAND"
 
         # make cd clear and ls
-        cd() { builtin cd "$@" && clear && ls --group-directories-first ; }
+        cd() { builtin cd "$@" && ${pkgs.busybox}/bin/clear && ls --group-directories-first ; }
 
         # prompt string
         SHELL_NAME=`[[ ! -z $name ]] && echo "$name "`
