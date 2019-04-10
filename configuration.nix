@@ -249,9 +249,7 @@
     programs.chromium.enable = true;
 
     xsession.enable = true;
-    xsession.initExtra = let
-      i3-focus-last = import ./i3-focus-last.nix { inherit pkgs; };
-    in ''
+    xsession.initExtra = ''
       ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
 
       xcape -e 'Control_L=Escape' # trigger escape on single lctrl
@@ -260,8 +258,6 @@
 
       while true; do ${pkgs.feh}/bin/feh -z --bg-fill ~/Downloads/Wallpapers;
         sleep $((5*60)); done &
-
-      ${i3-focus-last} &
     '';
   } [
   ];

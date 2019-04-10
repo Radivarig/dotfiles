@@ -1,6 +1,7 @@
 {pkgs, ...}:
 with pkgs;
 let
+i3-focus-last = import ./i3-focus-last.nix { inherit pkgs; };
 user = "radivarig"; # TODO: use module options tom take this from configuration.nix
 in {
   nixpkgs.overlays = [
@@ -24,6 +25,8 @@ in {
       "80:window_type = 'dock' && class_g = 'i3bar'"
       "70:class_g *= 'i3-frame'"
     ];
+
+    xsession.initExtra = ''${i3-focus-last} &'';
 
     xsession.windowManager.i3 = rec {
       enable = true;
