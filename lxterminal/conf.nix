@@ -9,7 +9,7 @@
     palette_color_1 = "rgb(170,0,0)";
     palette_color_2 = "rgb(0,170,0)";
     palette_color_3 = "rgb(170,85,0)";
-    palette_color_4 = "rgb(0,0,170)";
+    palette_color_4 = "rgb(100,0,255)";
     palette_color_5 = "rgb(170,0,170)";
     palette_color_6 = "rgb(0,170,170)";
     palette_color_7 = "rgb(170,170,170)";
