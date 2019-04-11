@@ -139,7 +139,7 @@ in {
         "$mod+w" = "layout tabbed";
         "$mod+e" = "layout toggle split";
 
-        "$mod+Tab" = "[con_mark=_last_focused] focus";
+        "$mod+Tab" = "[con_mark=f] focus";
 
         "$mod+Shift+space" = "floating toggle";
         "$mod+Shift+Tab" = "focus mode_toggle";

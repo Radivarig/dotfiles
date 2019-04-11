@@ -23,7 +23,7 @@ do
 	lastTime=$currentTime
 	if [ $period -gt $minFocusedTime  -o "$currentFocus" = "$prevPrevFocus" ]
 	then
-		[[ -z "$prevFocus" ]] || i3-msg "[id=$prevFocus] mark _last_focused" > /dev/null
+		[[ -z "$prevFocus" ]] || i3-msg "[id=$prevFocus] mark f" > /dev/null
 		prevPrevFocus=$prevFocus
 	fi
 	prevFocus=$currentFocus
