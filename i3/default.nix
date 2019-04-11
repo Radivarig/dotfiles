@@ -31,12 +31,6 @@ in {
     xsession.windowManager.i3 = rec {
       enable = true;
 
-      extraConfig = ''
-        for_window [class=.*] border normal 1
-        for_window [class=".*"] title_format "<span>%title</span>"
-        font pango:DejaVu Sans Mono 10
-      '';
-
       config.startup = [
         {command = "${pkgs.clipit}/bin/clipit";}
         {command = "${pkgs.hexchat}/bin/hexchat";}
@@ -89,6 +83,16 @@ in {
       };
 
       config.modifier = "Mod4";
+
+      extraConfig = ''
+        for_window [class=.*] border normal 1
+        for_window [class=".*"] title_format "<span>%title</span>"
+        font pango:DejaVu Sans Mono 10
+
+        bindsym --release Print                     exec "${scrot}/bin/scrot -m      ~/Screenshots/`date +%Y-%m-%d-%H-%M-%s`.png"
+        bindsym --release Shift+Print               exec "${scrot}/bin/scrot -s      ~/Screenshots/`date +%Y-%m-%d-%H-%M-%s`.png"
+        bindsym --release ${config.modifier}+Print  exec "${scrot}/bin/scrot -u -d 4 ~/Screenshots/`date +%Y-%m-%d-%H-%M-%s`.png"
+      '';
       config.keybindings = let
         mod = config.modifier;
         resizeSize = "5";
