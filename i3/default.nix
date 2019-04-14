@@ -32,7 +32,7 @@ in {
       enable = true;
 
       config.startup = [
-        {command = "${pkgs.clipit}/bin/clipit";}
+        {command = "exec ${pkgs.clipster}/bin/clipster -d";}
         {command = "${pkgs.hexchat}/bin/hexchat";}
       ];
 
@@ -86,6 +86,7 @@ in {
 
       extraConfig = ''
         set $mod ${config.modifier}
+        set $alt Mod1
 
         for_window [class=.*] border normal 1
         for_window [class=".*"] title_format "<span>%title</span>"
@@ -104,6 +105,7 @@ in {
 
       terminal-at-title-path = import ./terminal-at-title-path.nix {inherit pkgs;};
       in {
+        "Shift+$alt+e"         = "exec ${pkgs.clipster}/bin/clipster -s";
         "Shift+Escape"         = "exec echo ''"; # prevent chrome task manager
         "XF86AudioMute"        = "exec amixer sset 'Master' toggle";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -7%";

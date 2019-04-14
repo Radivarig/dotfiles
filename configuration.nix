@@ -76,7 +76,8 @@
       # sshfs
 
 
-      clipit hicolor-icon-theme
+      clipster
+      
 
       source-code-pro # font
 
