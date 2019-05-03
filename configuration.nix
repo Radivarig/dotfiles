@@ -9,9 +9,9 @@
     ./cachix.nix
     ./printer.nix
     ./display-manager.nix
+    ./termite.nix
     ./vscode/default.nix
     ./i3/default.nix
-    ./lxterminal/default.nix
     ./hidpi.nix
     ./git.nix
     ./screen-locker.nix
