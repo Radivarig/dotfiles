@@ -61,6 +61,8 @@
   home-manager.users.radivarig = with pkgs.lib; foldr (a: b: (attrsets.recursiveUpdate a b)) {
 
     home.packages = with pkgs; [
+      archivemount
+
       blueman
 
       ranger highlight
@@ -216,6 +218,12 @@
 
         # make cd clear and ls
         cd() { builtin cd "$@" && ${pkgs.busybox}/bin/clear && ls --group-directories-first ; }
+
+        # cd into archive as read-only
+        cda () {
+          local tmp_dir=$(mktemp -d /tmp/foo.XXXXXXXXX)
+          archivemount -o readonly "$@" $tmp_dir && cd $tmp_dir
+        }
 
         # prompt string
         SHELL_NAME=`[[ ! -z $name ]] && echo "$name "`
