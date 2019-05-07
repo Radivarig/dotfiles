@@ -10,6 +10,7 @@
     ./printer.nix
     ./display-manager.nix
     ./termite.nix
+    ./steam.nix
     ./vscode/default.nix
     ./i3/default.nix
     ./hidpi.nix
