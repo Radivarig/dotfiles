@@ -220,10 +220,12 @@
         cd() { builtin cd "$@" && ${pkgs.busybox}/bin/clear && ls --group-directories-first ; }
 
         # cd into archive as read-only
-        cda () {
+        cda() {
           local tmp_dir=$(mktemp -d /tmp/foo.XXXXXXXXX)
           archivemount -o readonly "$@" $tmp_dir && cd $tmp_dir
         }
+
+        wlg() { pushd $(dirname $(which "$1")); l | grep "$1"; popd; } # which, list, grep
 
         # prompt string
         SHELL_NAME=`[[ ! -z $name ]] && echo "$name "`
