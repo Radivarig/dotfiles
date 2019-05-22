@@ -5,8 +5,8 @@ in {
   home-manager.users."${user}" = {
     programs.termite = {
       enable = true;
-      scrollbackLines = 10000;
-      cursorBlink = "off"; # TODO set system wide
+      scrollbackLines = 100000;
+      searchWrap = false;
       backgroundColor = "rgba(0,0,0,1)";
       foregroundColor = "rgba(255,255,255,1)";
       colorsExtra = ''
