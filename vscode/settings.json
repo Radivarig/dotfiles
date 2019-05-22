@@ -12,10 +12,8 @@
         "comments": true,
         "strings": true
     },
-    "editor.renderWhitespace": "boundary",
     "workbench.colorCustomizations": {
         "editorCursor.foreground": "#00ffff",
-        "editorWhitespace.foreground": "#0d0d0d",
         "statusBar.background" : "#1A1A1A",
         "statusBar.noFolderBackground" : "#212121",
         "statusBar.debuggingBackground": "#263238"

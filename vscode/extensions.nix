@@ -122,4 +122,10 @@ with vscode-extensions; [
     version = "1.2.0";
     sha256 = "1qwkyi2gcmwmw74n6q2wixwm4da4xvbln0d70af6hwg4b9ysmxgs";
   }
+  {
+    name = "whiteviz";
+    publisher = "spywhere";
+    version = "0.6.1";
+    sha256 = "1nv8h1yfjvm7c7wl19kg4dhfhbisx4r7983p47njhhp17laf2wrc";
+  }
 ]
