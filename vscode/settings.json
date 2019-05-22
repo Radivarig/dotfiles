@@ -5,7 +5,7 @@
     "editor.tabSize": 2,
     "editor.wordWrap": "on",
     "diffEditor.renderSideBySide": false,
-    "update.channel": "none",
+    "update.mode": "none",
     "editor.cursorWidth": 2,
     "editor.quickSuggestions": {
         "other": true,
@@ -25,7 +25,7 @@
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.startupEditor": "newUntitledFile",
     "workbench.statusBar.visible": true,
-    "workbench.tree.horizontalScrolling": true,
+    "workbench.list.horizontalScrolling": true,
     "window.restoreWindows": "all",
     "search.smartCase": true,
     "window.zoomLevel": -1,
