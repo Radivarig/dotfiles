@@ -99,6 +99,10 @@ in {
       '';
       config.keybindings = let
         resizeSize = "5";
+        i3-set-split-by-size = pkgs.writeShellScriptBin "i3-set-split-by-size" ''
+          sh -c 'eval `${pkgs.xdotool}/bin/xdotool getactivewindow getwindowgeometry --shell`
+            if [ $((WIDTH*3/4)) -gt $HEIGHT ]; then ${i3}/bin/i3-msg split h; else ${i3}/bin/i3-msg split v; fi'
+        '';
         center-mouse = pkgs.writeShellScriptBin "center-mouse" ''
           sh -c 'eval `${pkgs.xdotool}/bin/xdotool getactivewindow getwindowgeometry --shell`
           ${pkgs.xdotool}/bin/xdotool mousemove $((X+WIDTH/2)) $((Y+HEIGHT/2))'
@@ -118,15 +122,15 @@ in {
         "$mod+F11" = "exec compton-trans -c -7";
         "$mod+F12" = "exec compton-trans -c +3";
 
-        "$mod+Return" = "exec ${terminal-at-title-path}/bin/terminal-at-title-path";
+        "$mod+Return" = "exec ${terminal-at-title-path}/bin/terminal-at-title-path; exec ${i3-set-split-by-size}/bin/i3-set-split-by-size";
         "$mod+Shift+q" = "kill";
         "$mod+d" = "exec ${pkgs.dmenu}/bin/dmenu_run -i";
         "$mod+f" = "exec ${pkgs.i3-easyfocus}/bin/i3-easyfocus";
 
         # move focus/move hjkl
-        "$mod+h" = "focus left; exec ${center-mouse}/bin/center-mouse";
-        "$mod+j" = "focus down; exec ${center-mouse}/bin/center-mouse";
-        "$mod+k" = "focus up; exec ${center-mouse}/bin/center-mouse";
+        "$mod+h" = "focus left;  exec ${center-mouse}/bin/center-mouse";
+        "$mod+j" = "focus down;  exec ${center-mouse}/bin/center-mouse";
+        "$mod+k" = "focus up;    exec ${center-mouse}/bin/center-mouse";
         "$mod+l" = "focus right; exec ${center-mouse}/bin/center-mouse";
 
         "$mod+Shift+h" = "move left";
@@ -175,10 +179,10 @@ in {
         "$mod+Shift+r" = "restart";
 
         # resize (also mod + rmb)
-        "$mod+Ctrl+Shift+h"  = "resize shrink width  ${resizeSize} px or ${resizeSize} ppt";
-        "$mod+Ctrl+Shift+j"  = "resize shrink height ${resizeSize} px or ${resizeSize} ppt";
-        "$mod+Ctrl+Shift+k"  = "resize grow   height ${resizeSize} px or ${resizeSize} ppt";
-        "$mod+Ctrl+Shift+l"  = "resize grow   width  ${resizeSize} px or ${resizeSize} ppt";
+        "$mod+Ctrl+Shift+h"  = "resize shrink width  ${resizeSize} px or ${resizeSize} ppt; exec ${i3-set-split-by-size}/bin/i3-set-split-by-size";
+        "$mod+Ctrl+Shift+j"  = "resize shrink height ${resizeSize} px or ${resizeSize} ppt; exec ${i3-set-split-by-size}/bin/i3-set-split-by-size";
+        "$mod+Ctrl+Shift+k"  = "resize grow   height ${resizeSize} px or ${resizeSize} ppt; exec ${i3-set-split-by-size}/bin/i3-set-split-by-size";
+        "$mod+Ctrl+Shift+l"  = "resize grow   width  ${resizeSize} px or ${resizeSize} ppt; exec ${i3-set-split-by-size}/bin/i3-set-split-by-size";
       };
     };
   };
