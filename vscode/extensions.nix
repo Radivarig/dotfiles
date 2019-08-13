@@ -33,10 +33,10 @@ with vscode-extensions; [
     sha256 = "0lahqjg1kzxa4vbjsyxp36i265s82b9xsj47siggi2iqi4slfwdx";
   }
   {
-    name = "expand-region";
-    publisher = "letrieu";
-    version = "0.1.2";
-    sha256 = "1r89pi1xwxh7pm7i0fc7zrvvs4xxpcyajwsbf2571saqh0p7wv7l";
+    name = "bracket-select";
+    publisher = "chunsen";
+    version = "2.0.1";
+    sha256 = "0sw8azz87ikadggp91ypfvazkbjs769z0p1bsl6cc18lfpmdfl2d";
   }
   {
     name = "nodejs-repl";
