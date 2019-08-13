@@ -32,7 +32,8 @@ in {
       enable = true;
 
       config.startup = [
-        {command = "exec ${pkgs.clipster}/bin/clipster -d";}
+        # TODO: move to file
+        {command = "exec ${pkgs.haskellPackages.greenclip}/bin/greenclip daemon";}
         {command = "${pkgs.hexchat}/bin/hexchat";}
       ];
 
@@ -105,7 +106,7 @@ in {
 
       terminal-at-title-path = import ./terminal-at-title-path.nix {inherit pkgs;};
       in {
-        "Shift+$alt+e"         = "exec ${pkgs.clipster}/bin/clipster -s";
+        "Shift+$alt+e" = ''exec ${pkgs.rofi}/bin/rofi -modi "clipboard:greenclip print" -show clipboard -run-command "{cmd}"'';
         "Shift+Escape"         = "exec echo ''"; # prevent chrome task manager
         "XF86AudioMute"        = "exec amixer sset 'Master' toggle";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -7%";

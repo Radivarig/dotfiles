@@ -58,6 +58,14 @@
     uid = 1000;
   };
 
+  # TODO: move to home.activation # TODO: config.lib.dag missing
+  # home.activation.greenclip = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+  #   ln -sf /etc/nixos/greenclip.cfg $HOME/.config/greenclip.cfg
+  # '';
+  system.activationScripts.link-greenclip-config = ''
+    ln -sf /etc/nixos/greenclip.cfg /home/radivarig/.config/greenclip.cfg
+  '';
+
   home-manager.users.radivarig = with pkgs.lib; foldr (a: b: (attrsets.recursiveUpdate a b)) {
 
     home.packages = with pkgs; [
@@ -79,9 +87,6 @@
       # sshfs
 
 
-      clipster
-      
-
       source-code-pro # font
 
       vlc
@@ -100,6 +105,7 @@
       ghc
       cabal-install
       haskellPackages.hoogle
+      haskellPackages.greenclip
 
       xcape
       xorg.xhost
