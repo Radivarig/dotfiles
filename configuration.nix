@@ -261,11 +261,12 @@
     programs.chromium.enable = true;
 
     xsession.enable = true;
+
+    # compose:release + symbol + letter: (/ đ) (< ž) (' ć)
     xsession.initExtra = ''
+      setxkbmap -model pc104 -layout us -option "compose:rctrl"
       ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
-
       xcape -e 'Control_L=Escape' # trigger escape on single lctrl
-
       ${pkgs.xlibs.xset}/bin/xset r rate 200 60  # keyboard repeat rate
 
       while true; do ${pkgs.feh}/bin/feh -z --bg-fill ~/Downloads/Wallpapers;
