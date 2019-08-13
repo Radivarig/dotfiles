@@ -50,4 +50,12 @@
     },
     "editor.cursorBlinking": "solid",
     "workbench.colorTheme": "x3-alpha",
+    "prettifySymbolsMode.substitutions": [
+        {
+            "language": "python",
+            "substitutions": [
+                { "ugly": "lambda", "pretty": "λ" },
+            ]
+        }
+    ],
 }
