@@ -127,27 +127,22 @@
       add control = Control_L Control_R
 
       ! set ralt to modeswitch
-      keycode 108 = NoSymbol NoSymbol
-      keycode 108 = Mode_switch
-
-      ! rctrl to backspace
-      keycode 105 = BackSpace
+      keycode 108 = NoSymbol NoSymbol NoSymbol NoSymbol
+      keycode 108 = Mode_switch Mode_switch Mode_switch Mode_switch
 
       ! ralt + hjkl to arrows
-      keysym h = h H Left NoSymbol NoSymbol NoSymbol
-      keysym j = j J Down NoSymbol NoSymbol NoSymbol
-      keysym k = k K Up NoSymbol NoSymbol NoSymbol
-      keysym l = l L Right NoSymbol lstroke Lstroke
+      keysym h = h H Left NoSymbol
+      keysym j = j J Down NoSymbol
+      keysym k = k K Up NoSymbol
+      keysym l = l L Right NoSymbol
 
       ! rshift to enter
       keycode 62 = Return
-
-      ! add Tab to Alt_L
-      keycode 64 = Tab ISO_Left_Tab Tab ISO_Left_Tab
     '';
 
     services.compton.enable = true;
 
+    # todo: test that map delete works
     home.file.".config/ranger/rc.conf".text = ''
       map <DELETE> shell -s trash-put %s
       set show_hidden true
