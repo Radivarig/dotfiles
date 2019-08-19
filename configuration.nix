@@ -219,18 +219,23 @@
 
         parse_git_branch(){ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /';}
 
-        set_current_dir_as_title='echo -ne "\e]0; $(dirs)/\007"' # for terminal-at-title-path
+        set_current_dir_as_title='echo -ne "\e]0; $(dirs +0)/\007"' # for terminal-at-title-path
         PROMPT_COMMAND="$set_current_dir_as_title;$PROMPT_COMMAND"
 
-        # make cd clear and ls
-        cd() { builtin cd "$@" && ${pkgs.busybox}/bin/clear && ls --group-directories-first ; }
+        # make cd pushd, clear and ls. use popd to go one dir back
+        cd() {
+          if [ $# -eq 0 ]; then DIR="$HOME"; else DIR="$1"; fi
+          builtin pushd "$DIR" && ${pkgs.busybox}/bin/clear && ls --group-directories-first
+        }
 
         # cd into archive as read-only
         cda() {
           local tmp_dir=$(mktemp -d /tmp/foo.XXXXXXXXX)
           archivemount -o readonly "$@" $tmp_dir && cd $tmp_dir
         }
+        function cdb { if [ $1 -ne 0 ]; then { cd ..; cdb $[$1-1]; }; fi }
 
+        # for symlink chains use `namei`
         wlg() { pushd $(dirname $(which "$1")); l | grep "$1"; popd; } # which, list, grep
 
         # prompt string
