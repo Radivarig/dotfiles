@@ -120,10 +120,14 @@
 
     # todo: extend xkb layout
     home.file.".Xmodmap".text = ''
-      ! ctrl to capslock
-      clear lock
-      clear control
-      keycode 66 = Control_L
+      ! Lock to Hyper
+      clear Lock
+      keycode 66 = Hyper_L
+
+      ! mod4 to Control
+      clear mod4
+      keycode 133 = Control_L
+      clear Control
       add control = Control_L Control_R
 
       ! set ralt to modeswitch
