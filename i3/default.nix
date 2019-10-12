@@ -2,6 +2,7 @@
 with pkgs;
 let
 user = "radivarig"; # TODO: use module options tom take this from configuration.nix
+i3blocks = import ./i3blocks.nix {inherit pkgs;};
 in {
   home-manager.users."${user}" = {
     services.compton.opacityRule = [
@@ -9,6 +10,10 @@ in {
       "70:class_g *= 'i3-frame'"
     ];
 
+    xsession.initExtra = ''
+    '';
+
+    home.file.".config/i3blocks/config".text = import ./i3blocks-config.nix {inherit pkgs;};
     xsession.windowManager.i3 = rec {
       enable = true;
 
@@ -20,6 +25,7 @@ in {
 
       config.bars = let
       in [{
+        statusCommand = "${i3blocks}/bin/i3blocks";
         fonts = ["DejaVu Sans Mono 10"];
         colors = rec {
           background = "#22222299";
