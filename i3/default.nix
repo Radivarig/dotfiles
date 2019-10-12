@@ -1,7 +1,6 @@
 {pkgs, ...}:
 with pkgs;
 let
-i3-focus-last = import ./i3-focus-last.nix { inherit pkgs; };
 user = "radivarig"; # TODO: use module options tom take this from configuration.nix
 in {
   home-manager.users."${user}" = {
@@ -9,8 +8,6 @@ in {
       "80:window_type = 'dock' && class_g = 'i3bar'"
       "70:class_g *= 'i3-frame'"
     ];
-
-    xsession.initExtra = ''${i3-focus-last} &'';
 
     xsession.windowManager.i3 = rec {
       enable = true;
@@ -83,10 +80,6 @@ in {
       '';
       config.keybindings = let
         resizeSize = "5";
-        i3-set-split-by-size = pkgs.writeShellScriptBin "i3-set-split-by-size" ''
-          sh -c 'eval `${pkgs.xdotool}/bin/xdotool getactivewindow getwindowgeometry --shell`
-            if [ $((WIDTH*3/4)) -gt $HEIGHT ]; then ${i3}/bin/i3-msg split h; else ${i3}/bin/i3-msg split v; fi'
-        '';
         center-mouse = pkgs.writeShellScriptBin "center-mouse" ''
           sh -c 'eval `${pkgs.xdotool}/bin/xdotool getactivewindow getwindowgeometry --shell`
           ${pkgs.xdotool}/bin/xdotool mousemove $((X+WIDTH/2)) $((Y+HEIGHT/2))'
@@ -106,7 +99,7 @@ in {
         "$mod+F11" = "exec compton-trans -c -7";
         "$mod+F12" = "exec compton-trans -c +3";
 
-        "$mod+Return" = "exec ${terminal-at-title-path}/bin/terminal-at-title-path; exec ${i3-set-split-by-size}/bin/i3-set-split-by-size";
+        "$mod+Return" = "exec ${terminal-at-title-path}/bin/terminal-at-title-path";
         "$mod+Shift+q" = "kill";
         "$mod+d" = "exec ${pkgs.dmenu}/bin/dmenu_run -i";
 
@@ -129,10 +122,8 @@ in {
         "$mod+w" = "layout tabbed";
         "$mod+e" = "layout toggle split";
 
-        "$mod+Tab" = "[con_mark=f] focus";
-
         "$mod+Shift+space" = "floating toggle";
-        "$mod+Shift+Tab" = "focus mode_toggle";
+        "$mod+Tab" = "focus mode_toggle";
         "$mod+minus" = "sticky toggle";
 
         "$mod+a" = "focus parent";
@@ -162,10 +153,10 @@ in {
         "$mod+Shift+r" = "restart";
 
         # resize (also mod + rmb)
-        "$mod+Ctrl+Shift+h"  = "resize shrink width  ${resizeSize} px or ${resizeSize} ppt; exec ${i3-set-split-by-size}/bin/i3-set-split-by-size";
-        "$mod+Ctrl+Shift+j"  = "resize shrink height ${resizeSize} px or ${resizeSize} ppt; exec ${i3-set-split-by-size}/bin/i3-set-split-by-size";
-        "$mod+Ctrl+Shift+k"  = "resize grow   height ${resizeSize} px or ${resizeSize} ppt; exec ${i3-set-split-by-size}/bin/i3-set-split-by-size";
-        "$mod+Ctrl+Shift+l"  = "resize grow   width  ${resizeSize} px or ${resizeSize} ppt; exec ${i3-set-split-by-size}/bin/i3-set-split-by-size";
+        "$mod+Ctrl+Shift+h"  = "resize shrink width  ${resizeSize} px or ${resizeSize} ppt";
+        "$mod+Ctrl+Shift+j"  = "resize shrink height ${resizeSize} px or ${resizeSize} ppt";
+        "$mod+Ctrl+Shift+k"  = "resize grow   height ${resizeSize} px or ${resizeSize} ppt";
+        "$mod+Ctrl+Shift+l"  = "resize grow   width  ${resizeSize} px or ${resizeSize} ppt";
       };
     };
   };
