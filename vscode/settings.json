@@ -48,6 +48,7 @@
         "**/.DS_Store": true,
         "**/node_modules*": true,
     },
+    "editor.suggest.filteredTypes": { "snippet": false },
     "editor.cursorBlinking": "solid",
     "workbench.colorTheme": "x3-alpha",
     "prettifySymbolsMode.substitutions": [
