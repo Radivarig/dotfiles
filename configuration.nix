@@ -31,8 +31,14 @@
   };
 
   services.xserver.resolutions = [{x = 1920; y = 1080;}];
+
+  networking.firewall.allowedTCPPorts = [22 4200];
   networking.networkmanager.enable = true;
-  virtualisation.docker.enable = true;
+
+  virtualisation = {
+    docker.enable = true;
+    virtualbox.host.enable = true;
+  };
 
   services.openssh = {
     enable = true;
@@ -58,7 +64,7 @@
 
   users.users.radivarig = {
     isNormalUser = true; # set some defaults
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" "audio" "docker" "scanner" "vboxusers"];
     uid = 1000;
   };
 
@@ -70,12 +76,29 @@
     ln -sf /etc/nixos/greenclip.cfg /home/radivarig/.config/greenclip.cfg
   '';
 
+  # hardware.bluetooth.enable = true;
   home-manager.users.radivarig = with pkgs.lib; foldr (a: b: (attrsets.recursiveUpdate a b)) {
+    nixpkgs.config.allowUnfree = true;
 
     home.packages = with pkgs; [
+      # nautilus
+
+      ardour
+      krita
+
+      #unity3d
+      dotnet-sdk
+
+      freemind
+
+      audio-recorder
+      blueman
+
+      irssi
       archivemount
 
       blueman
+      simple-scan
 
       ranger highlight
       trash-cli
@@ -85,11 +108,16 @@
       pciutils # lspci setpci
       rlwrap
 
-      python36Packages.mps-youtube
+      wirelesstools
+      inotify-tools
+      swiProlog
+
+      python3Packages.mps-youtube
 
       # udiskie
       # sshfs
 
+      # hicolor-icon-theme # fallback icons for freedesktop.org
 
       source-code-pro # font
 
@@ -209,7 +237,7 @@
         ${less-color-vars}
 
         # skip saving some dangerous commands
-        HISTIGNORE=' *:rm *:rmdir *:del *:sudo *'
+        HISTIGNORE=' *:rm *:rmdir *:del *:sudo *:fg:bg'
         . ${bash-history-per-terminal}
 
         ${ranger-cd}
@@ -221,7 +249,7 @@
         set_current_dir_as_title='echo -ne "\e]0; $(dirs +0)/\007"' # for terminal-at-title-path
         PROMPT_COMMAND="$set_current_dir_as_title;$PROMPT_COMMAND"
 
-        # make cd pushd, clear and ls. use popd to go one dir back
+        # make cd pushd, clear and ls. use `popd` to go back
         cd() {
           if [ $# -eq 0 ]; then DIR="$HOME"; else DIR="$1"; fi
           builtin pushd "$DIR" && ${pkgs.busybox}/bin/clear && ls --group-directories-first
@@ -248,6 +276,9 @@
         ".." = "cd ..";
         "cd.." = "cd ..";
         "..." = "cd ../..";
+
+        bc = "bc --mathlib";
+        lsblk="lsblk -o NAME,TYPE,FSTYPE,LABEL,UUID,SIZE,MOUNTPOINT";
 
         mkdir = "mkdir -pv"; # create parent
         del = "trash-put";
