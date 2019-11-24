@@ -6,8 +6,33 @@ with vscode-extensions; [
   ms-vscode.cpptools
   ms-python.python
 ]
+
 # for the rest of extensions
 ++ vscode-utils.extensionsFromVscodeMarketplace [
+  {
+    name = "highlight-trailing-white-spaces";
+    publisher = "ybaumes";
+    version = "0.0.2";
+    sha256 = "01hqvszdxg1mn2wyax8alkz92scqv20741rkpvy62hm0wy4piqf2";
+  }
+  {
+    name = "turbo-console-log";
+    publisher = "chakrounanas";
+    version = "1.3.1";
+    sha256 = "06hff8nhm2cnvbd0rg297haw29n8zwkdh5y20qak41jxhilgn4ip";
+  }
+  {
+    name = "prettify-symbols-mode";
+    publisher = "siegebell";
+    version = "0.4.2";
+    sha256 = "0jpv9jy9hll3ypx4638j0sabjdlnhrw3lsd876x2p4cyjbvd8xn8";
+  }
+  {
+    name = "csharp";
+    publisher = "ms-vscode";
+    version = "1.21.8";
+    sha256 = "0jafv4i2acvfja5pj5nka1i05xza6xyjsvzizma3aj233nx1ag0q";
+  }
   {
     name = "bracket-pair-colorizer";
     publisher = "CoenraadS";
@@ -23,8 +48,8 @@ with vscode-extensions; [
   {
     name = "blender-development";
     publisher = "JacquesLucke";
-    version = "0.0.11";
-    sha256 = "1mb479x6b8kc2vcmlmxr4pgji5cwqf8hjfbi4yh62d7lcakskam0";
+    version = "0.0.12";
+    sha256 = "1np437ahichidlr90irf4anc1v8vg3w10lhv3q5nrgwlq5rydxyz";
   }
   {
     name = "vsc-space-block-jumper";
@@ -103,12 +128,6 @@ with vscode-extensions; [
     publisher = "twxs";
     version = "0.0.17";
     sha256 = "11hzjd0gxkq37689rrr2aszxng5l9fwpgs9nnglq3zhfa1msyn08";
-  }
-  {
-    name = "cmake-tools";
-    publisher = "vector-of-bool";
-    version = "1.1.3";
-    sha256 = "1x9ph4r742dxj0hv6269ngm7w4h0n558cvxcz9n3cg79wpd7j5i5";
   }
   {
     name = "gitblame";
