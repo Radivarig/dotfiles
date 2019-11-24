@@ -9,9 +9,15 @@
       extraConfig = {
         core = {
           whitespace = "cr-at-eol";
+          excludesfile = "~/.gitignore_global";
         };
       };
     };
+
+    home.file.".gitignore_global".text = with pkgs;  ''
+      # for local-history vscode extension
+      .history
+    '';
 
     programs.bash.shellAliases = {
       gl = "git log";

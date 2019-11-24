@@ -10,6 +10,12 @@ with vscode-extensions; [
 # for the rest of extensions
 ++ vscode-utils.extensionsFromVscodeMarketplace [
   {
+    name = "local-history";
+    publisher = "xyz";
+    version = "1.7.0";
+    sha256 = "1fqf2jnk7aix27m6l7ry19bl23bhj9szm3wibglmfa8pnjhp78gm";
+  }
+  {
     name = "highlight-trailing-white-spaces";
     publisher = "ybaumes";
     version = "0.0.2";

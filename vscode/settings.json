@@ -48,6 +48,7 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/node_modules*": true,
+        "**/.history/*": true,
     },
     "editor.suggest.filteredTypes": { "snippet": false },
     "editor.cursorBlinking": "solid",
