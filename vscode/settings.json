@@ -1,4 +1,6 @@
 {
+    "editor.codeLens": false,
+    "omnisharp.path": "/run/current-system/sw/bin/omnisharp",
     "window.menuBarVisibility": "hidden",
     "editor.minimap.enabled": false,
     "editor.showFoldingControls": "always",
@@ -26,7 +28,6 @@
     "workbench.list.horizontalScrolling": true,
     "window.restoreWindows": "all",
     "search.smartCase": true,
-    "window.zoomLevel": -1,
     "window.enableMenuBarMnemonics": false,
     "keyboard.dispatch": "keyCode",
     "files.hotExit": "onExitAndWindowClose",
@@ -58,5 +59,17 @@
                 { "ugly": "lambda", "pretty": "λ" },
             ]
         }
+    ],
+    "window.zoomLevel": 0,
+    "blender.addon.reloadOnSave": true,
+    "blender.executables": [
+        {
+            "path": "/home/radivarig/projects/blender/blender",
+            "name": "",
+            "isDebug": false
+        }
+    ],
+    "python.autoComplete.extraPaths": [
+        "/home/radivarig/Downloads/fake_bpy_modules_2.80-20190718"
     ],
 }
