@@ -31,8 +31,8 @@ in {
           background = "#22222299";
           focusedWorkspace = activeWorkspace;
           activeWorkspace = {
-            border = "#535F7F";
-            background = "#535F7F";
+            border = "#535FAF";
+            background = "#535FAF";
             text = "#ffffff";
           };
         };
@@ -43,10 +43,10 @@ in {
       };
       config.colors = rec {
         focused = {
-          background = "#535F7F";
-          border = "#535F7F";
-          childBorder = "#535F7F";
-          indicator = "#535F7F";
+          background = "#535FAF";
+          border = "#535FAF";
+          childBorder = "#535FAF";
+          indicator = "#535FAF";
           text = "#ffffff";
         };
 
@@ -55,9 +55,9 @@ in {
 
         unfocused = {
           background = "#222222";
-          border = "#000000";
-          childBorder = "#000000";
-          indicator = "#000000";
+          border = "#222222";
+          childBorder = "#222222";
+          indicator = "#222222";
           text = "#888888";
         };
 
