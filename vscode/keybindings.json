@@ -5,9 +5,6 @@
   { "key": "ctrl+shift+up", "command": "spaceBlockJumper.selectUp", "when": "textInputFocus" },
   { "key": "ctrl+shift+down", "command": "spaceBlockJumper.selectDown", "when": "textInputFocus" },
 
-  { "key": "shift+alt+left", "command": "workbench.action.moveEditorToPreviousGroup", "when": "editorFocus" },
-  { "key": "shift+alt+right", "command": "workbench.action.moveEditorToNextGroup", "when": "editorFocus" },
-
   { "key": "ctrl+shift+space", "command": "bracket-select.select", "when": "editorTextFocus" },
 
   { "key": "alt+f", "command": "findJump.activate" },
@@ -17,8 +14,7 @@
 
   { "key": "ctrl+q", "command": "noop" },
 
-  { "key": "ctrl+alt+d", "command": "editor.action.selectHighlights",
-    "when": "editorFocus"},
+  { "key": "ctrl+alt+d", "command": "editor.action.selectHighlights", "when": "editorFocus"},
 
   { "key": "ctrl+k ctrl+u", "command": "editor.action.transformToUppercase" },
   { "key": "ctrl+k ctrl+l", "command": "editor.action.transformToLowercase" },
@@ -28,7 +24,13 @@
   { "key": "ctrl+t", "command": "editor.action.transpose" },
 
   { "key": "alt+-", "command": "workbench.action.navigateBack" },
+  { "key": "shift+alt+-", "command": "workbench.action.navigateForward" },
 
-  { "key": "alt+=", "command": "workbench.action.navigateForward" },
-  { "key": "ctrl+alt+r", "command": "workbench.action.reloadWindow" },
+  { "key": "shift+alt+r", "command": "workbench.action.reloadWindow" },
+
+  { "key": "ctrl+left", "command": "cursorWordLeft", "when": "editorTextFocus" },
+  { "key": "ctrl+shift+left", "command": "cursorWordLeftSelect", "when": "editorTextFocus" },
+
+  { "key": "ctrl+right", "command": "cursorWordRight", "when": "editorTextFocus" },
+  { "key": "ctrl+shift+right", "command": "cursorWordRightSelect", "when": "editorTextFocus" },
 ]
