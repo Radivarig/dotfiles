@@ -29,8 +29,8 @@
     enable = true;
     exportConfiguration = true;
   };
-  services.xserver.resolutions = [{x = 1600; y = 900;}];
 
+  services.xserver.resolutions = [{x = 1920; y = 1080;}];
   networking.networkmanager.enable = true;
   virtualisation.docker.enable = true;
 
