@@ -94,10 +94,10 @@ in {
       terminal-at-title-path = import ./terminal-at-title-path.nix {inherit pkgs;};
       in {
         "Shift+$alt+e" = ''exec ${pkgs.rofi}/bin/rofi -modi "clipboard:greenclip print" -show clipboard -run-command "{cmd}"'';
-        "Shift+Escape"         = "exec echo ''"; # prevent chrome task manager
-        "XF86AudioMute"        = "exec amixer sset 'Master' toggle";
-        "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -7%";
-        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +3%";
+        "Shift+Escape" = "exec echo ''"; # prevent chrome task manager
+        "$mod+F1" = "exec amixer sset 'Master' toggle";
+        "$mod+F2" = "exec pactl set-sink-volume @DEFAULT_SINK@ -7%";
+        "$mod+F3" = "exec pactl set-sink-volume @DEFAULT_SINK@ +3%";
 
         "XF86MonBrightnessDown" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -dec 7";
         "XF86MonBrightnessUp"   = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -inc 3";
