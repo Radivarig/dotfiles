@@ -8,6 +8,8 @@ then
   boot.earlyVconsoleSetup = true;
   i18n.consoleFont = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 
-  services.xserver.dpi = 220;
+
+  # fonts.fontconfig.dpi = 227;
+  # services.xserver.dpi = 227;
 }
 else {}

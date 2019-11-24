@@ -25,7 +25,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    exportConfiguration = true;
+  };
+  services.xserver.resolutions = [{x = 1600; y = 900;}];
 
   networking.networkmanager.enable = true;
   virtualisation.docker.enable = true;
