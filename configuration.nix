@@ -72,8 +72,9 @@
   # home.activation.greenclip = config.lib.dag.entryAfter [ "writeBoundary" ] ''
   #   ln -sf /etc/nixos/greenclip.cfg $HOME/.config/greenclip.cfg
   # '';
-  system.activationScripts.link-greenclip-config = ''
+  system.activationScripts.stuff = ''
     ln -sf /etc/nixos/greenclip.cfg /home/radivarig/.config/greenclip.cfg
+    ln -sf /bin/sh /bin/bash
   '';
 
   # hardware.bluetooth.enable = true;
