@@ -3,7 +3,7 @@
     "local-history.absolute": true,
 
     "editor.codeLens": false,
-    "omnisharp.path": "/run/current-system/sw/bin/omnisharp",
+    "omnisharp.path": "/home/radivarig/.nix-profile/bin/omnisharp",
     "window.menuBarVisibility": "hidden",
     "editor.minimap.enabled": false,
     "editor.showFoldingControls": "always",
@@ -17,6 +17,7 @@
         "comments": true,
         "strings": true
     },
+    "workbench.sideBar.location": "right",
     "workbench.colorCustomizations": {
         "editorCursor.foreground": "#00ffff",
         "statusBar.background" : "#1A1A1A",
@@ -38,6 +39,7 @@
     "window.titleBarStyle": "native",
     "workbench.activityBar.visible": true,
     "search.location": "sidebar",
+
     "python.linting.mypyEnabled": true,
     "AREPL.whenToExecute": "onSave",
     "python.linting.pylintArgs": [
