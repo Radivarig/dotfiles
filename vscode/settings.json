@@ -1,4 +1,7 @@
 {
+    "local-history.path": "/home/radivarig/.config/Code/",
+    "local-history.absolute": true,
+
     "editor.codeLens": false,
     "omnisharp.path": "/run/current-system/sw/bin/omnisharp",
     "window.menuBarVisibility": "hidden",
