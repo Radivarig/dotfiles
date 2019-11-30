@@ -33,12 +33,12 @@ with vscode-extensions; [
     version = "0.4.2";
     sha256 = "0jpv9jy9hll3ypx4638j0sabjdlnhrw3lsd876x2p4cyjbvd8xn8";
   }
-  {
-    name = "csharp";
-    publisher = "ms-vscode";
-    version = "1.21.8";
-    sha256 = "0jafv4i2acvfja5pj5nka1i05xza6xyjsvzizma3aj233nx1ag0q";
-  }
+  # {
+  #   name = "csharp";
+  #   publisher = "ms-vscode";
+  #   version = "1.21.8";
+  #   sha256 = "0jafv4i2acvfja5pj5nka1i05xza6xyjsvzizma3aj233nx1ag0q";
+  # }
   {
     name = "bracket-pair-colorizer";
     publisher = "CoenraadS";
