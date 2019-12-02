@@ -256,7 +256,11 @@
 
         stty -ixon # disable "flow control" (ctrl+S/Q), to free forward search
 
-        parse_git_branch(){ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /';}
+        append_space_if_defined(){ local str=$(echo "$*" | awk '{$1=$1};1'); echo "''${str:+$str }";}
+
+        get_git_branch(){ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/';}
+        get_git_dirty(){ [[ ! -z "$(git status --porcelain 2> /dev/null)" ]] && echo "☢";}
+        get_shell_name(){ [[ ! -z $name ]] && echo "$name";}
 
         set_current_dir_as_title='echo -ne "\e]0; $(dirs +0)/\007"' # for terminal-at-title-path
         PROMPT_COMMAND="$set_current_dir_as_title;$PROMPT_COMMAND"
@@ -278,8 +282,13 @@
         wlg() { pushd $(dirname $(which "$1")); l | grep "$1"; popd; } # which, list, grep
 
         # prompt string
-        SHELL_NAME=`[[ ! -z $name ]] && echo "$name "`
-        PS1='\[\e[33m\]$SHELL_NAME\[\e[32m\]`parse_git_branch`\[\e[90m\]λ \[\e[00m\]'
+        PS1='\
+\[\e[33m\]`append_space_if_defined $(get_shell_name)`\
+\[\e[32m\]`append_space_if_defined $(get_git_branch)`\
+\[\e[34m\]`append_space_if_defined $(get_git_dirty)`\
+\[\e[90m\]λ \
+\[\e[00m\]'
+
         echo -ne "\e]12;cyan\a" # cursor color
         echo -ne "\x1b[\x36 q" # cursor non-blinking bar
       '';
