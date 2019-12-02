@@ -301,6 +301,8 @@
         bc = "bc --mathlib";
         lsblk="lsblk -o NAME,TYPE,FSTYPE,LABEL,UUID,SIZE,MOUNTPOINT";
 
+        grep="grep --color";
+
         mkdir = "mkdir -pv"; # create parent
         del = "trash-put";
         r = "ranger-cd";
