@@ -112,12 +112,6 @@ with vscode-extensions; [
     sha256 = "18m08k8ghck4dcd83v9r4a7djw4yc40qb1ajga57qc2gag6m9sg7";
   }
   {
-    name = "vscode-journal";
-    publisher = "pajoma";
-    version = "0.9.1";
-    sha256 = "11n483jmsvjd1jm1gj4zr9dg3f0mdmq62ca4xsx7a8s3z4p3v0sg";
-  }
-  {
     name = "vscode-scheme";
     publisher = "sjhuangx";
     version = "0.3.2";
