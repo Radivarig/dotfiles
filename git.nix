@@ -15,8 +15,6 @@
     };
 
     home.file.".gitignore_global".text = with pkgs;  ''
-      # for local-history vscode extension
-      .history
     '';
 
     programs.bash.shellAliases = {
