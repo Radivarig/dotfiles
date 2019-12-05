@@ -46,6 +46,10 @@
     permitRootLogin = "no";
   };
 
+  security.sudo.extraConfig = ''
+    Defaults timestamp_timeout=0
+  '';
+
   sound.enable = true;
   hardware.pulseaudio.enable = true;
   hardware.bluetooth.enable = true;
@@ -249,7 +253,7 @@
         ${less-color-vars}
 
         # skip saving some dangerous commands
-        HISTIGNORE=' *:rm *:rmdir *:del *:sudo *:fg:bg'
+        HISTIGNORE=' *:rm *:rmdir *:del *:fg:bg'
         . ${bash-history-per-terminal}
 
         ${ranger-cd}
