@@ -306,6 +306,7 @@
         lsblk="lsblk -o NAME,TYPE,FSTYPE,LABEL,UUID,SIZE,MOUNTPOINT";
 
         grep="grep --color";
+        reset="${pkgs.busybox}/bin/reset; source ~/.bashrc";
 
         mkdir = "mkdir -pv"; # create parent
         del = "trash-put";
