@@ -272,7 +272,7 @@
         # make cd pushd, clear and ls. use `popd` to go back
         cd() {
           if [ $# -eq 0 ]; then DIR="$HOME"; else DIR="$1"; fi
-          builtin pushd "$DIR" && ${pkgs.busybox}/bin/clear && ls --group-directories-first
+          builtin pushd "$DIR" && ${pkgs.busybox}/bin/clear -x && ls --group-directories-first
         }
 
         # cd into archive as read-only
