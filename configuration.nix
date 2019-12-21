@@ -314,6 +314,7 @@
 
         nr = ''nix repl "<nixpkgs>" "<nixpkgs/nixos>"'';
         ns = ''nix-shell --command "/run/current-system/sw/bin/bash" '';
+        nsp = ''nix-shell --command "/run/current-system/sw/bin/bash" -p'';
         nb = "nix-build";
 
         # add prompt
@@ -323,6 +324,8 @@
 
         youtube = "mpsyt";
         pingu = "ping -c 3 google.com";
+
+        alias = "#";
       };
     };
 
