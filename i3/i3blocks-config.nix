@@ -17,7 +17,7 @@ interval=1
 color=#A4C2F4
 
 [ip]
-command=ifconfig | sed -n '/BROADCAST,RUNNING/{N;p}' | sed -En 's/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'
+command=ifconfig | grep -C 1 'BROADCAST RUNNING' | awk '/inet addr:*/{gsub("addr:","");print $2}'
 interval=5
 color=#91E78B
 
