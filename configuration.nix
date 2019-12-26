@@ -173,6 +173,21 @@
       keysym k = k K Up NoSymbol
       keysym l = l L Right NoSymbol
 
+      keysym g = g G Home
+      keysym semicolon = semicolon colon End
+
+      ! keypad numbers for mousekeys
+      keysym y = y Y KP_4
+      keysym u = u U KP_2
+      keysym i = i I KP_8
+      keysym o = o O KP_6
+
+      ! keysym 8 = 8 asterisk XF86ScrollDown
+      ! keysym 9 = 9 parenleft XF86ScrollUp
+      keysym 0 = 0 parenright Pointer_Button1
+      keysym minus = minus underscore Pointer_Button3
+      keysym equal = equal plus Pointer_Button2
+
       ! rshift to enter
       keycode 62 = Return
     '';
@@ -340,6 +355,9 @@
       ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
       xcape -e 'Control_L=Escape' # trigger escape on single lctrl
       ${pkgs.xlibs.xset}/bin/xset r rate 200 60  # keyboard repeat rate
+      ${pkgs.xlibs.xset}/bin/xset led named "Mouse Keys"  # enable mousekeys
+      # xkbset ma [delay] [interval] [time to max] [max speed] [curve]
+      ${pkgs.xkbset}/bin/xkbset ma 1 15 20 30 20 # set mousekeys acceleration
 
       while true; do ${pkgs.feh}/bin/feh -z --bg-fill ~/Downloads/Wallpapers;
         sleep $((5*60)); done &
