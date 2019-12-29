@@ -304,7 +304,7 @@
         PS1='\
 \[\e[33m\]`append_space_if_defined $(get_shell_name)`\
 \[\e[32m\]`append_space_if_defined $(get_git_branch)`\
-\[\e[33m\]`append_space_if_defined $(get_git_dirty)`\
+\[\e[93m\]`append_space_if_defined $(get_git_dirty)`\
 \[\e[90m\]λ \
 \[\e[00m\]'
 
