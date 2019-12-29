@@ -58,6 +58,12 @@ with vscode-extensions; [
     sha256 = "1np437ahichidlr90irf4anc1v8vg3w10lhv3q5nrgwlq5rydxyz";
   }
   {
+    name = "partial-diff";
+    publisher = "ryu1kn";
+    version = "1.4.0";
+    sha256 = "1q8ccbaqv6kq6mw5gizslnjg4rdzpwmapaac17z9pwah8qsnqimw";
+  }
+  {
     name = "vsc-space-block-jumper";
     publisher = "jmfirth";
     version = "1.2.2";
