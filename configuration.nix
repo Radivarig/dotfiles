@@ -349,17 +349,21 @@
 
     xsession.enable = true;
 
-    # compose:release + symbol + letter: (/ đ) (< ž) (' ć)
     xsession.initExtra = ''
+      # compose [release + symbol + letter]: (/ đ) (< ž) (' ć)
       setxkbmap -model pc104 -layout us -option "compose:rctrl"
       ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
       xcape -e 'Control_L=Escape' # trigger escape on single lctrl
-      ${pkgs.xlibs.xset}/bin/xset r rate 200 60  # keyboard repeat rate
-      ${pkgs.xlibs.xset}/bin/xset led named "Mouse Keys"  # enable mousekeys
-      # xkbset ma [delay] [interval] [time to max] [max speed] [curve]
-      ${pkgs.xkbset}/bin/xkbset ma 1 15 20 30 20 # set mousekeys acceleration
 
-      while true; do ${pkgs.feh}/bin/feh -z --bg-fill ~/Downloads/Wallpapers;
+      ${pkgs.xkbset}/bin/xkbset r rate 200 20 # keyboard repeat rate
+      ${pkgs.xkbset}/bin/xkbset m # enable mousekeys
+      # xkbset ma [delay] [interval] [time to max] [max speed] [curve]
+      ${pkgs.xkbset}/bin/xkbset ma 1 15 20 30 20 # mousekeys accelleration
+      # TODO: why this stops working?? xkbset q | grep "Mouse Keys" shows "Mouse Keys: On"
+      while true; do ${pkgs.xkbset}/bin/xkbset m; sleep $((30)); done &
+
+      while true; do
+        ${pkgs.feh}/bin/feh -z --recursive --bg-max ~/spacebase/wallpapers;
         sleep $((5*60)); done &
     '';
   } [
