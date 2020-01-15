@@ -11,8 +11,8 @@ in {
       foregroundColor = "rgba(255,255,255,1)";
       colorsExtra = ''
         color0 = rgba(0,0,0,1)
-        color1 = rgba(170,0,0,1)
-        color2 = rgba(0,170,0,1)
+        color1 = rgba(219,45,32,1)
+        color2 = rgba(0,162,82,1)
         color3 = rgba(170,85,0,1)
         color4 = rgba(100,100,255,1)
         color5 = rgba(170,0,170,1)
