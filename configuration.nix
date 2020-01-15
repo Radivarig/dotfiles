@@ -365,7 +365,7 @@
       ${pkgs.xkbset}/bin/xkbset r rate 200 20 # keyboard repeat rate
       ${pkgs.xkbset}/bin/xkbset m # enable mousekeys
       # xkbset ma [delay] [interval] [time to max] [max speed] [curve]
-      ${pkgs.xkbset}/bin/xkbset ma 1 15 20 30 20 # mousekeys accelleration
+      ${pkgs.xkbset}/bin/xkbset ma 1 15 40 30 20 # mousekeys accelleration
       # TODO: why this stops working?? xkbset q | grep "Mouse Keys" shows "Mouse Keys: On"
       while true; do ${pkgs.xkbset}/bin/xkbset m; sleep $((30)); done &
 
