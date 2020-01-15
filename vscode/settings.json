@@ -56,7 +56,7 @@
         "**/node_modules*": true,
         "**/.history/*": true,
     },
-    "editor.suggest.filteredTypes": { "snippet": false },
+    "editor.suggest.showSnippets": false,
     "editor.cursorBlinking": "solid",
     "workbench.colorTheme": "x3-alpha",
     "prettifySymbolsMode.substitutions": [
