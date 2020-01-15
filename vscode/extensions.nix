@@ -4,7 +4,6 @@ with pkgs;
 with vscode-extensions; [
   bbenoist.Nix
   ms-vscode.cpptools
-  ms-python.python
 ]
 
 # for the rest of extensions
