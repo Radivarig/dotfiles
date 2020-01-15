@@ -217,8 +217,8 @@
       def hook_init(fm):
           def on_cd():
               if fm.thisdir:
-                  title = os.path.basename(fm.thisdir.path)
-                  sys.stdout.write("\033k"+title+"\033\\")
+                  title = fm.thisdir.path
+                  sys.stdout.write('\33]0;'+title+'\a')
                   sys.stdout.flush()
 
           fm.signal_bind('cd', on_cd)
