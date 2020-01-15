@@ -12,6 +12,7 @@
     "diffEditor.renderSideBySide": false,
     "update.mode": "none",
     "editor.cursorWidth": 2,
+    "editor.cursorSurroundingLines": 50,
     "editor.quickSuggestions": {
         "other": true,
         "comments": true,
