@@ -182,8 +182,8 @@
       keysym i = i I KP_8
       keysym o = o O KP_6
 
-      ! keysym 8 = 8 asterisk XF86ScrollDown
-      ! keysym 9 = 9 parenleft XF86ScrollUp
+      ! keysym 8 = 8 asterisk Pointer_Button5
+      ! keysym 9 = 9 parenleft Pointer_Button4
       keysym 0 = 0 parenright Pointer_Button1
       keysym minus = minus underscore Pointer_Button3
       keysym equal = equal plus Pointer_Button2
@@ -195,7 +195,12 @@
       vSync = "opengl-swc";
     };
 
-    # todo: test that map delete works
+    home.file.".xbindkeysrc".text = ''
+      # TODO: figure out mode_switch + <key> issue
+      "${pkgs.xdotool}/bin/xdotool click 4" F9
+      "${pkgs.xdotool}/bin/xdotool click 5" F10
+    '';
+
     home.file.".config/ranger/rc.conf".text = ''
       map <DELETE> shell -s trash-put %s
       set show_hidden true
@@ -355,6 +360,7 @@
       setxkbmap -model pc104 -layout us -option "compose:rctrl"
       ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
       xcape -e 'Control_L=Escape' # trigger escape on single lctrl
+      ${pkgs.xbindkeys}/bin/xbindkeys -f ~/.xbindkeysrc
 
       ${pkgs.xkbset}/bin/xkbset r rate 200 20 # keyboard repeat rate
       ${pkgs.xkbset}/bin/xkbset m # enable mousekeys
