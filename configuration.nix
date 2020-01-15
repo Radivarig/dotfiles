@@ -188,8 +188,6 @@
       keysym minus = minus underscore Pointer_Button3
       keysym equal = equal plus Pointer_Button2
 
-      ! rshift to enter
-      keycode 62 = Return
     '';
 
     services.compton = {
