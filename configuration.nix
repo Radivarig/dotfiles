@@ -192,7 +192,10 @@
       keycode 62 = Return
     '';
 
-    services.compton.enable = true;
+    services.compton = {
+      enable = true;
+      vSync = "opengl-swc";
+    };
 
     # todo: test that map delete works
     home.file.".config/ranger/rc.conf".text = ''
