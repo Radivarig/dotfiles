@@ -302,6 +302,7 @@
           archivemount -o readonly "$@" $tmp_dir && cd $tmp_dir
         }
         function cdb { if [ $1 -ne 0 ]; then { cd ..; cdb $[$1-1]; }; fi }
+        function nsp { nix-shell --command "export name='$*' ;/run/current-system/sw/bin/bash" -p $@; }
 
         # for symlink chains use `namei`
         wlg() { pushd $(dirname $(which "$1")); l | grep "$1"; popd; } # which, list, grep
@@ -335,7 +336,6 @@
 
         nr = ''nix repl "<nixpkgs>" "<nixpkgs/nixos>"'';
         ns = ''nix-shell --command "/run/current-system/sw/bin/bash" '';
-        nsp = ''nix-shell --command "/run/current-system/sw/bin/bash" -p'';
         nb = "nix-build";
 
         # add prompt
