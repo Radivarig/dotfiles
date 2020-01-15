@@ -370,7 +370,7 @@
       while true; do ${pkgs.xkbset}/bin/xkbset m; sleep $((30)); done &
 
       while true; do
-        ${pkgs.feh}/bin/feh -z --recursive --bg-scale ~/spacebase/wallpapers;
+        ${pkgs.feh}/bin/feh -z --recursive --bg-max ~/spacebase/wallpapers;
         sleep $((5*60)); done &
     '';
   } [
