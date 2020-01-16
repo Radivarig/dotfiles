@@ -198,9 +198,9 @@
     home.file.".xbindkeysrc".text = ''
       # TODO: figure out mode_switch + <key> issue
       "${pkgs.xdotool}/bin/xdotool click 4"
-        F9
-      "${pkgs.xdotool}/bin/xdotool click 5"
         F10
+      "${pkgs.xdotool}/bin/xdotool click 5"
+        F9
     '';
 
     home.file.".config/ranger/rc.conf".text = ''
