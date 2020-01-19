@@ -17,7 +17,7 @@
     ./git.nix
     ./screen-locker.nix
 
-    "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-19.03.tar.gz}/nixos"
+  (import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
   ];
 
   services.nixosManual.showManual = true;
@@ -249,7 +249,7 @@
       bash-history-per-terminal = import ./bash-history-per-terminal.nix {inherit pkgs; };
       less-color-vars = import ./less-color-vars.nix;
       ranger-cd = builtins.replaceStrings ["/usr/bin/ranger"] ["${pkgs.ranger}/bin/ranger"]
-        (builtins.readFile "${pkgs.ranger.src}/examples/bash_automatic_cd.sh");
+        (builtins.readFile "${pkgs.ranger.src}/examples/shell_automatic_cd.sh");
     in rec {
       enable = true;
       enableAutojump = true;

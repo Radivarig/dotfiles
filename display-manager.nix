@@ -1,9 +1,8 @@
 { pkgs, ... }: with pkgs;
 {
   services.xserver.displayManager = {
-    slim = {
+    lightdm = {
       enable = true;
-      defaultUser = "radivarig";
     };
   };
 }

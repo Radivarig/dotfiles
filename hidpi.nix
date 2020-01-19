@@ -5,11 +5,8 @@ in
 if machine.model == "xps15"
 then
 {
-  boot.earlyVconsoleSetup = true;
-  i18n.consoleFont = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
-
-
-  # fonts.fontconfig.dpi = 227;
-  # services.xserver.dpi = 227;
+  console.earlySetup = true;
+  console.font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 }
-else {}
+else {
+}
