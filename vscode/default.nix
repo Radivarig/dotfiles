@@ -19,7 +19,7 @@ in {
   in rec {
     text = ''
       for x in ${lib.concatMapStringsSep " " toString configs}; do
-        ln -sf ${vscodeNixConfDir}/$x ${vscodeConfDir}/
+        ln -f ${vscodeNixConfDir}/$x ${vscodeConfDir}/
       done
 
       mkdir -p ${extDir}
