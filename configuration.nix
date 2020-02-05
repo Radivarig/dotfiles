@@ -210,6 +210,7 @@
 
     home.file.".config/ranger/rc.conf".text = ''
       map <DELETE> shell -s trash-put %s
+      set confirm_on_delete always
       set show_hidden true
     '';
     home.file.".config/ranger/plugins/cd_to_title.py".text = ''
