@@ -270,8 +270,8 @@
       '';
 
       sessionVariables = rec {
-        EDITOR="emacs -nw -q";
-        GIT_EDITOR="${EDITOR}";
+        EDITOR="vim";
+        GIT_EDITOR="emacs -nw -q";
       };
 
       initExtra = ''
@@ -357,6 +357,7 @@
       };
     };
 
+    programs.vim.enable = true;
     programs.emacs.enable = true;
     programs.chromium.enable = true;
 
