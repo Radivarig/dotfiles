@@ -201,6 +201,11 @@
         F10
       "${pkgs.xdotool}/bin/xdotool click 5"
         F9
+
+      "echo ' '"
+      Prior
+      "echo ' '"
+      Next
     '';
 
     home.file.".config/ranger/rc.conf".text = ''
