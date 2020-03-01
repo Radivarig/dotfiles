@@ -1,13 +1,16 @@
 { config, pkgs, ... }:
-
+let
+  nixos-unstable = import <nixos-unstable> {config = {allowUnfree = true;};};
+  # nixpkgs = import <nixpkgs> {config = { allowUnfree = true;};};
+in
 # todo: separate to files
 # todo: use full paths from ${pkgs.package}/bin/package
 {
   imports = [
     ./hardware-configuration.nix # hardware scan results
     ./boot.nix
-    ./cachix.nix
-    ./printer.nix
+    # ./cachix.nix
+    # ./printer.nix # NOTE: broken in 19.09 unstable
     ./display-manager.nix
     ./termite.nix
     ./steam.nix
@@ -17,7 +20,8 @@
     ./git.nix
     ./screen-locker.nix
 
-  (import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
+  # (import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
+  "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-19.09.tar.gz}/nixos"
   ];
 
   services.nixosManual.showManual = true;
@@ -83,20 +87,28 @@
     ln -sf /etc/nixos/greenclip.cfg /home/radivarig/.config/greenclip.cfg
     ln -sf /bin/sh /bin/bash
   '';
-
   # hardware.bluetooth.enable = true;
   home-manager.users.radivarig = with pkgs.lib; foldr (a: b: (attrsets.recursiveUpdate a b)) {
     nixpkgs.config.allowUnfree = true;
 
     home.packages = with pkgs; [
-      # nautilus
+      nixos-unstable.blender
+      nixos-unstable.spotify
 
+      # nautilus
       ardour
+      # qjackctl jack2
+      guitarix
+      gxplugins-lv2
+
       krita
 
-      #unity3d
+      nixos-unstable.unityhub
+      nixos-unstable.omnisharp-roslyn
+      nixos-unstable.mono5
       dotnet-sdk
 
+      wine
       freemind
 
       audio-recorder
@@ -114,6 +126,7 @@
       qdirstat
 
       pciutils # lspci setpci
+      telnet
       rlwrap
 
       wirelesstools
@@ -190,7 +203,6 @@
       keysym 0 = 0 parenright Pointer_Button1
       keysym minus = minus underscore Pointer_Button3
       keysym equal = equal plus Pointer_Button2
-
     '';
 
     services.compton = {
@@ -258,7 +270,7 @@
       bash-history-per-terminal = import ./bash-history-per-terminal.nix {inherit pkgs; };
       less-color-vars = import ./less-color-vars.nix;
       ranger-cd = builtins.replaceStrings ["/usr/bin/ranger"] ["${pkgs.ranger}/bin/ranger"]
-        (builtins.readFile "${pkgs.ranger.src}/examples/shell_automatic_cd.sh");
+        (builtins.readFile "${pkgs.ranger.src}/examples/bash_automatic_cd.sh");
     in rec {
       enable = true;
       enableAutojump = true;
@@ -289,6 +301,7 @@
         . ${bash-history-per-terminal}
 
         ${ranger-cd}
+        bind '"\C-o":"ranger-cd\C-m"' # bind this explicitly, even though ranger-cd has this as a side-effect..
 
         stty -ixon # disable "flow control" (ctrl+S/Q), to free forward search
 
