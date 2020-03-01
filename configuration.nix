@@ -53,6 +53,7 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
   hardware.bluetooth.enable = true;
+  hardware.brightnessctl.enable = true;
 
   # change ONLY after NixOS release notes say so (db servers can break)
   system.stateVersion = "18.09"; # Did you read the comment?
@@ -68,7 +69,7 @@
 
   users.users.radivarig = {
     isNormalUser = true; # set some defaults
-    extraGroups = [ "wheel" "audio" "docker" "scanner" "vboxusers"];
+    extraGroups = [ "wheel" "video" "audio" "docker" "scanner" "vboxusers"];
     uid = 1000;
   };
 

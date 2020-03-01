@@ -99,8 +99,8 @@ in {
         "$mod+F2" = "exec pactl set-sink-volume @DEFAULT_SINK@ -7%";
         "$mod+F3" = "exec pactl set-sink-volume @DEFAULT_SINK@ +3%";
 
-        "XF86MonBrightnessDown" = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -dec 7";
-        "XF86MonBrightnessUp"   = "exec ${pkgs.xorg.xbacklight}/bin/xbacklight -inc 3";
+        "Shift+$mod+F11" = "exec ${pkgs.acpilight}/bin/xbacklight -dec 7";
+        "Shift+$mod+F12" = "exec ${pkgs.acpilight}/bin/xbacklight -inc 3";
 
         "$mod+F11" = "exec compton-trans -c -7";
         "$mod+F12" = "exec compton-trans -c +3";
