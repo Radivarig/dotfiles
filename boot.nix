@@ -4,6 +4,7 @@ machine = import ./machine-settings.nix {inherit pkgs;};
 in
 if machine.model == "xps15"
 then {
+  boot.kernelPackages = pkgs.linuxPackages_4_19;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.luks.devices = {
