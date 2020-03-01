@@ -58,6 +58,8 @@
   # change ONLY after NixOS release notes say so (db servers can break)
   system.stateVersion = "18.09"; # Did you read the comment?
 
+  # TODO: this does not work and services.xserver.synaptics.enable = false neither..
+  # services.xserver.libinput.enable = false;
   services.xserver.synaptics = {
     enable = true;
     twoFingerScroll = true;
@@ -366,6 +368,8 @@
     xsession.enable = true;
 
     home.file.".apply_keyboard_settings".text = ''
+      ${pkgs.xorg.xinput}/bin/xinput disable $(${pkgs.xorg.xinput}/bin/xinput | grep -i touchpad | grep -oP '.*id=\K\d+')
+
       # compose [release + symbol + letter]: (/ đ) (< ž) (' ć)
       setxkbmap -model pc104 -layout us -option "compose:rctrl"
       ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
