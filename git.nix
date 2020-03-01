@@ -12,6 +12,9 @@
           excludesfile = "~/.gitignore_global";
         };
       };
+      lfs = {
+        enable = true;
+      };
     };
 
     home.file.".gitignore_global".text = with pkgs;  ''
