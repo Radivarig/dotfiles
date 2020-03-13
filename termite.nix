@@ -7,6 +7,7 @@ in {
       enable = true;
       scrollbackLines = 100000;
       searchWrap = false;
+      clickableUrl = false;
       backgroundColor = "rgba(0,0,0,1)";
       foregroundColor = "rgba(255,255,255,1)";
       colorsExtra = ''
