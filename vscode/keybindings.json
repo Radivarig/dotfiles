@@ -5,7 +5,8 @@
   { "key": "ctrl+shift+up", "command": "spaceBlockJumper.selectUp", "when": "textInputFocus" },
   { "key": "ctrl+shift+down", "command": "spaceBlockJumper.selectDown", "when": "textInputFocus" },
 
-  { "key": "ctrl+shift+space", "command": "bracket-select.select", "when": "editorTextFocus" },
+  { "key": "ctrl+w", "command": "workbench.action.closeActiveEditor" },
+  { "key": "ctrl+shift+space", "command": "expand_region", "when": "editorTextFocus" },
 
   { "key": "alt+f", "command": "findJump.activate" },
   { "key": "alt+shift+f", "command": "findJump.activateWithSelection" },
