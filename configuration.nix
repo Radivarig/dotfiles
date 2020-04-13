@@ -12,13 +12,11 @@ in
     # ./cachix.nix
     # ./printer.nix # NOTE: broken in 19.09 unstable
     ./display-manager.nix
-    ./termite.nix
-    ./steam.nix
+    # ./steam.nix
+    # ./unity.nix
     ./vscode/default.nix
     ./i3/default.nix
     ./hidpi.nix
-    ./git.nix
-    ./screen-locker.nix
 
   # (import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
   "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-19.09.tar.gz}/nixos"
@@ -90,86 +88,6 @@ in
   # hardware.bluetooth.enable = true;
   home-manager.users.radivarig = with pkgs.lib; foldr (a: b: (attrsets.recursiveUpdate a b)) {
     nixpkgs.config.allowUnfree = true;
-
-    home.packages = with pkgs; [
-      nixos-unstable.blender
-      nixos-unstable.spotify
-
-      # nautilus
-      ardour
-      # qjackctl jack2
-      guitarix
-      gxplugins-lv2
-
-      krita
-
-      nixos-unstable.unityhub
-      nixos-unstable.omnisharp-roslyn
-      nixos-unstable.mono5
-      dotnet-sdk
-
-      wine
-      freemind
-
-      audio-recorder
-      blueman
-
-      irssi
-      archivemount
-
-      blueman
-      simple-scan
-
-      ranger highlight
-      trash-cli
-      bc
-      qdirstat
-
-      pciutils # lspci setpci
-      telnet
-      rlwrap
-
-      wirelesstools
-      inotify-tools
-      swiProlog
-
-      python3Packages.mps-youtube
-
-      # udiskie
-      # sshfs
-
-      # hicolor-icon-theme # fallback icons for freedesktop.org
-
-      source-code-pro # font
-
-      vlc
-      pavucontrol
-
-      kazam
-
-      tldr
-      wget
-      zip unzip
-      lsof
-      htop
-
-      hexchat
-
-      ghc
-      cabal-install
-      haskellPackages.hoogle
-      haskellPackages.greenclip
-
-      xcape
-      xorg.xhost
-      xorg.xkill
-      xorg.xev
-      xorg.xmodmap
-
-
-      feh
-      nodejs-10_x
-    ];
 
     # todo: extend xkb layout
     home.file.".Xmodmap".text = ''
@@ -323,7 +241,7 @@ in
         # cd into archive as read-only
         cda() {
           local tmp_dir=$(mktemp -d /tmp/foo.XXXXXXXXX)
-          archivemount -o readonly "$@" $tmp_dir && cd $tmp_dir
+          ${pkgs.archivemount}/bin/archivemount -o readonly "$@" $tmp_dir && cd $tmp_dir
         }
         function cdb { if [ $1 -ne 0 ]; then { cd ..; cdb $[$1-1]; }; fi }
         function nsp { nix-shell --command "export name='$*' ;/run/current-system/sw/bin/bash" -p $@; }
@@ -348,7 +266,7 @@ in
         "cd.." = "cd ..";
         "..." = "cd ../..";
 
-        bc = "bc --mathlib";
+        bc = "${pkgs.bc}/bin/bc --mathlib";
         lsblk="lsblk -o NAME,TYPE,FSTYPE,LABEL,UUID,SIZE,MOUNTPOINT";
 
         grep="grep --color";
@@ -358,7 +276,7 @@ in
         del = "trash-put";
         r = "ranger-cd";
 
-        nr = ''nix repl "<nixpkgs>" "<nixpkgs/nixos>"'';
+        nr = ''nix repl "<nixos-unstable>"'';
         ns = ''nix-shell --command "/run/current-system/sw/bin/bash" '';
         nb = "nix-build";
 
@@ -386,7 +304,7 @@ in
       # compose [release + symbol + letter]: (/ đ) (< ž) (' ć)
       setxkbmap -model pc104 -layout us -option "compose:rctrl"
       ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
-      xcape -e 'Control_L=Escape' # trigger escape on single lctrl
+      ${pkgs.xcape}/bin/xcape -e 'Control_L=Escape' # trigger escape on single lctrl
       ${pkgs.xbindkeys}/bin/xbindkeys -f ~/.xbindkeysrc
 
       ${pkgs.xkbset}/bin/xkbset r rate 200 20 # keyboard repeat rate
@@ -405,5 +323,9 @@ in
         sleep $((5*60)); done &
     '';
   } [
+    (import ./home-configuration/termite.nix {inherit pkgs;})
+    (import ./home-configuration/git.nix {inherit pkgs;})
+    (import ./home-configuration/packages.nix {inherit pkgs; inherit nixos-unstable;})
+    (import ./home-configuration/screen-locker.nix {inherit pkgs;})
   ];
 }
