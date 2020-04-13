@@ -102,25 +102,25 @@ in
       keycode 108 = Mode_switch Mode_switch Mode_switch Mode_switch
 
       ! ralt + hjkl to arrows
-      keysym h = h H Left NoSymbol
-      keysym j = j J Down NoSymbol
-      keysym k = k K Up NoSymbol
-      keysym l = l L Right NoSymbol
+      keysym h = h H Left Left
+      keysym j = j J Down Down
+      keysym k = k K Up Up
+      keysym l = l L Right Right
 
-      keysym g = g G Home
-      keysym semicolon = semicolon colon End
+      keysym g = g G Home Home
+      keysym semicolon = semicolon colon End End
 
       ! keypad numbers for mousekeys
-      keysym y = y Y KP_4
-      keysym u = u U KP_2
-      keysym i = i I KP_8
-      keysym o = o O KP_6
+      keysym y = y Y KP_4 KP_4
+      keysym u = u U KP_2 KP_2
+      keysym i = i I KP_8 KP_8
+      keysym o = o O KP_6 KP_6
 
-      ! keysym 8 = 8 asterisk Pointer_Button5
-      ! keysym 9 = 9 parenleft Pointer_Button4
-      keysym 0 = 0 parenright Pointer_Button1
-      keysym minus = minus underscore Pointer_Button3
-      keysym equal = equal plus Pointer_Button2
+      ! keysym 8 = 8 asterisk Pointer_Button5 Pointer_Button5
+      ! keysym 9 = 9 parenleft Pointer_Button4 Pointer_Button4
+      keysym 0 = 0 parenright Pointer_Button1 Pointer_Button1
+      keysym minus = minus underscore Pointer_Button3 Pointer_Button3
+      keysym equal = equal plus Pointer_Button2 Pointer_Button2
     '';
 
     services.compton = {
@@ -312,7 +312,7 @@ in
       # xkbset ma [delay] [interval] [time to max] [max speed] [curve]
       ${pkgs.xkbset}/bin/xkbset ma 1 15 40 30 20 # mousekeys accelleration
       # TODO: why this stops working?? xkbset q | grep "Mouse Keys" shows "Mouse Keys: On"
-      while true; do ${pkgs.xkbset}/bin/xkbset m; sleep 15; done
+      while true; do ${pkgs.xkbset}/bin/xkbset m; sleep 3; done
     '';
 
     xsession.initExtra = ''
