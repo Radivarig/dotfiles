@@ -17,7 +17,7 @@ interval=1
 color=#A4C2F4
 
 [ip]
-command=ifconfig | grep -C 1 'BROADCAST RUNNING' | awk '/inet addr:*/{gsub("addr:","");print $2}'
+command=ifconfig | grep -C 1 'BROADCAST,RUNNING' | awk '/inet */{gsub("addr:","");print $2}'
 interval=5
 color=#91E78B
 
