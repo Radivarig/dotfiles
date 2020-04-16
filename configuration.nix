@@ -327,5 +327,6 @@ in
     (import ./home-configuration/git.nix {inherit pkgs;})
     (import ./home-configuration/packages.nix {inherit pkgs; inherit nixos-unstable;})
     (import ./home-configuration/screen-locker.nix {inherit pkgs;})
+    # (import ./home-configuration/unity.nix {inherit pkgs;})
   ];
 }
