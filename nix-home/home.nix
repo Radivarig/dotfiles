@@ -26,6 +26,7 @@
     ./rofi.nix
     ./input-remaps.nix
     ./ranger.nix
+    ./vscode/default.nix
 
     ./bash-history.nix
     ./bash-stuff.nix

@@ -9,7 +9,6 @@
     # ./printer.nix # NOTE: broken in 19.09 unstable
     ./display-manager.nix
     # ./steam.nix
-    ./vscode/default.nix
     ./hidpi.nix
 
   # (import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
