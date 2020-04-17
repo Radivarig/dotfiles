@@ -54,7 +54,7 @@
     setxkbmap -model pc104 -layout us -option "compose:rctrl"
     ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
     ${pkgs.xcape}/bin/xcape -e 'Control_L=Escape' # trigger escape on single lctrl
-    ${pkgs.xbindkeys}/bin/keys -f ~/.xbindkeysrc
+    ${pkgs.xbindkeys}/bin/xbindkeys -f ~/.xbindkeysrc
 
     ${pkgs.xkbset}/bin/xkbset r rate 200 20 # keyboard repeat rate
     ${pkgs.xkbset}/bin/xkbset m # enable mousekeys
