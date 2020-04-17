@@ -1,13 +1,13 @@
-{pkgs, nixos-unstable, ...}:
-with pkgs; {
+{pkgs, ...}: with pkgs;
+{
   home.packages = [
     # media
     pavucontrol
     krita
-    nixos-unstable.blender
-    nixos-unstable.spotify
+    unstable.blender
+    unstable.spotify
     vlc
-    nixos-unstable.mps-youtube # not working
+    unstable.mps-youtube # not working
 
     freemind # mind maps
     libreoffice
@@ -49,7 +49,5 @@ with pkgs; {
 
     # hicolor-icon-theme # fallback icons for freedesktop.org
     source-code-pro # font
-
-    haskellPackages.greenclip
   ];
 }

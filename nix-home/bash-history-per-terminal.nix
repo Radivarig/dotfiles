@@ -3,8 +3,6 @@
 #   while keeping each terminals commands at the end of its history list
 # Source it from '~/.bashrc'
 
-{ pkgs, ... }:
-pkgs.writeScript "bash-history-per-terminal"
 ''
 COMMON_HISTFILE="$HISTFILE" # file to which to append commands
 TTY_HISTFILE="$HOME/.bhpt/tty_"`basename $(tty)`

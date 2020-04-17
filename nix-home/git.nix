@@ -11,6 +11,7 @@
         excludesfile = "~/.gitignore_global";
       };
     };
+    # large file storage
     lfs = {
       enable = true;
     };
@@ -18,6 +19,10 @@
 
   home.file.".gitignore_global".text = with pkgs;  ''
   '';
+
+  programs.bash.sessionVariables = {
+    GIT_EDITOR="nano";
+  };
 
   programs.bash.shellAliases = {
     gl = "git log";

@@ -1,6 +1,6 @@
-{pkgs, nixos-unstable, ...}: with pkgs; {
+{pkgs, ...}: with pkgs; {
   home.packages = [
-    nixos-unstable.unityhub
+    unstable.unityhub
     omnisharp-roslyn
     mono
     dotnet-sdk
