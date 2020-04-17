@@ -1,3 +1,7 @@
+# dbankier.vscode-quick-select-0.2.8
+# letrieu.expand-region-0.1.4
+# cardinal90.multi-cursor-case-preserve-1.0.5
+
 {pkgs, ...}:
 with pkgs;
 # for extensions that exist in nixpkgs (some even do not work from marketplace)

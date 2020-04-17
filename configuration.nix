@@ -3,7 +3,7 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ./hardware-configuration.nix # hardware scan results
+    ./hardware-configuration.nix # hardware scan results, generated
     ./boot.nix
     # ./cachix.nix
     # ./printer.nix # NOTE: broken in 19.09 unstable
@@ -11,7 +11,6 @@
     # ./steam.nix
     ./hidpi.nix
 
-  # (import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
   "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-19.09.tar.gz}/nixos"
   ];
 
@@ -45,8 +44,8 @@
   # change ONLY after NixOS release notes say so (db servers can break)
   system.stateVersion = "18.09"; # Did you read the comment?
 
-  # TODO: this does not work and services.xserver.synaptics.enable = false neither..
-  # services.xserver.libinput.enable = false;
+  # services.xserver.synaptics.enable = false; # TODO: does not work
+  # services.xserver.libinput.enable = false; # TODO: does not work
   services.xserver.synaptics = {
     enable = true;
     twoFingerScroll = true;
@@ -63,7 +62,7 @@
   };
 
   system.activationScripts.stuff = ''
-    ln -sf /bin/sh /bin/bash # don't remember why this was needed
+    ln -sf /bin/sh /bin/bash # for shebanged scripts?
   '';
   home-manager.users.radivarig = import ./nix-home/home.nix;
 }
