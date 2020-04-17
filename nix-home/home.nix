@@ -19,8 +19,9 @@
   };
 
   imports = [
-    ./screen-locker.nix
     ./termite.nix
+    ./i3/default.nix
+    ./screen-locker.nix
     ./git.nix
     ./rofi.nix
     ./input-remaps.nix
