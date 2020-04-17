@@ -6,8 +6,8 @@ if machine.model == "xps15"
 then
 {
   boot.earlyVconsoleSetup = true;
-  # console.earlySetup = true;
-  # console.font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+  i18n.consoleFont = "ter-i32b";
+  i18n.consolePackages = with pkgs; [ terminus_font ];
 }
 else {
 }
