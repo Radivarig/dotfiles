@@ -39,8 +39,8 @@ with vscode-extensions; [
   {
     name = "csharp";
     publisher = "ms-dotnettools";
-    version = "1.21.12";
-    sha256 = "1dm879g07qw169i6jy5cmkx8cbf61acbxw7kxz3ggblkk4y48jfq";
+    version = "1.21.16";
+    sha256 = "1v4lyys8vk2ik5z8xrkisf55mibi5vfywgc7pblpbl9ijivip0yl";
   }
   {
     name = "bracket-pair-colorizer";

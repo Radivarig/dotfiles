@@ -1,7 +1,7 @@
 {pkgs, ...}:
 let
-  ranger-cd = builtins.replaceStrings ["/usr/bin/ranger"] ["${pkgs.ranger}/bin/ranger"]
-    (builtins.readFile "${pkgs.ranger.src}/examples/bash_automatic_cd.sh");
+  ranger-cd =builtins.replaceStrings ["/usr/bin/ranger"] ["${pkgs.ranger}/bin/ranger"]
+    (builtins.readFile "${pkgs.ranger.src}/examples/shell_automatic_cd.sh");
 in
 {
   programs.bash.initExtra = ''

@@ -26,7 +26,7 @@
     '';
   };
 
-  services.compton.opacityRule = [
+  services.picom.opacityRule = [
     "70:class_g *= 'Termite'"
   ];
 

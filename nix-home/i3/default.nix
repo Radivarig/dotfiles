@@ -2,7 +2,7 @@
 let
 i3blocks = import ./i3blocks.nix {inherit pkgs;};
 in {
-  services.compton.opacityRule = [
+  services.picom.opacityRule = [
     "80:window_type = 'dock' && class_g = 'i3bar'"
     "70:class_g *= 'i3-frame'"
   ];

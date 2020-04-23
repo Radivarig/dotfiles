@@ -13,9 +13,9 @@
 
   xsession.enable = true;
 
-  services.compton = {
+  services.picom = {
     enable = true;
-    vSync = "opengl-swc";
+    vSync = true;
   };
 
   imports = [

@@ -4,7 +4,7 @@ let
 extensions = import ./extensions.nix {inherit pkgs;};
 in {
   home.packages = [vscode];
-  services.compton.opacityRule = ["90:class_g *= 'Code'"];
+  services.picom.opacityRule = ["90:class_g *= 'Code'"];
 
   home.activation.vscode-extensions =
   let
@@ -21,7 +21,7 @@ in {
     mkdir -p ${extDir}
     chown $(whoami):users ${extDir}
     for x in ${lib.concatMapStringsSep " " toString extensions}; do
-      ln -sf $x/shhare/vscode/extensions/* ${extDir}/
+      ln -sf $x/share/vscode/extensions/* ${extDir}/
     done
     chown -R $(whoami):users ${extDir}
   '';

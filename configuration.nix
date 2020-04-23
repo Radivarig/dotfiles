@@ -11,7 +11,7 @@
     # ./steam.nix
     ./hidpi.nix
 
-  "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-19.09.tar.gz}/nixos"
+  "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-20.03.tar.gz}/nixos"
   ];
 
   services.nixosManual.showManual = true;
@@ -38,7 +38,7 @@
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
-  hardware.brightnessctl.enable = true;
+  hardware.acpilight.enable = true;
   # hardware.bluetooth.enable = true;
 
   # change ONLY after NixOS release notes say so (db servers can break)

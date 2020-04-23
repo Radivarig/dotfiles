@@ -5,9 +5,9 @@ in
 if machine.model == "xps15"
 then
 {
-  boot.earlyVconsoleSetup = true;
-  i18n.consoleFont = "ter-i32b";
-  i18n.consolePackages = with pkgs; [ terminus_font ];
+  console.earlySetup = true;
+  console.font = "ter-i32b";
+  console.packages = with pkgs; [ terminus_font ];
 }
 else {
 }
